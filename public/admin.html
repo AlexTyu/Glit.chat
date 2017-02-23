@@ -16,7 +16,7 @@
 
 <body class="admin" ng-app="beetchat" ng-controller="main">
     <style>
-      {{LiveCss}}
+      {{options.LiveCss}}
     </style>
     <div class="beetchat">
       <div class="general-wrapper" style="color: {{options.textColor}}; font-size: {{options.textSize}}px; background-color: {{options.bgColor}}; background-image: url({{options.bgImage}}); animation-name: {{options.wrapperAnimation}}">
@@ -54,7 +54,7 @@
           <div class="row">
             <label> Background</label>
             <input type="color" ng-model="options.bgColor" ng-change="updateOptions()" style="margin-right: 20px;">
-            <input ng-model="options.bgImage" ng-change="updateOptions()" style="flex-grow: 1;">
+            <input ng-model="options.bgImage" placeholder="Img URL" ng-change="updateOptions()" style="flex-grow: 1;">
             <select ng-model="options.bgImage" ng-change="updateOptions()" style="margin-left: 20px;">
               <option value="">none</option>
               <option value="http://49.media.tumblr.com/79222e3f67bc37408e9a6825f5eb2188/tumblr_o4at51bG4M1s4fz4bo1_500.gif">Glitch 1</option>
@@ -73,28 +73,25 @@
 
           <div class="row">
             <label> Prompt </label>
-            <input type="text" ng-model="options.popuptext" style="flex-grow: 1"/>
+            <input type="text"  placeholder="Text" ng-model="options.popuptext" style="flex-grow: 1"/>
             <input type="checkbox" ng-model="options.popup"> <span style="color: white"> Visible </span>
             <button ng-click="updateOptions()" style="margin-left: 20px;"> Submit Pop-up </button>
           </div>
 
           <div class="row">
             <label> Screen state</label>
-            <select ng-model="options.wrapperAnimation" style="flex-grow: 1">
-              <option value="">none</option>
-              <option value="glitch">Glitch 1</option>
-              <option value="tvoff">TV Off</option>
-              <option value="tvon">TV On</option>
-            </select>
-            <button ng-click="updateOptions()" style="margin-left: 20px;"> Submit Animation </button>
+            <button ng-click="options.wrapperAnimation = ''; updateOptions()">none</button>
+            <button ng-click="options.wrapperAnimation = 'glitch'; updateOptions()">Glitch 1</button>
+            <button ng-click="options.wrapperAnimation = 'tvoff'; updateOptions()">TV Off</button>
+            <button ng-click="options.wrapperAnimation = 'tvon'; updateOptions()">TV On</button>
           </div>
 
           <div class="row" style="height: auto; position: relative;">
             <label>Live CSS
             <span> beetchat, general-wrapper, messages, message, p </span>
             </label>
-            <textarea ng-model="LiveCss" style="flex-grow: 1; height: 100px"/></textarea>
-            <button ng-click="submitCss()" style="position: absolute; bottom: 10px; right: 10px;"> Submit css </button>
+            <textarea ng-model="options.LiveCss" style="flex-grow: 1; height: 100px"/></textarea>
+            <button ng-click="updateOptions()" style="position: absolute; bottom: 10px; right: 10px;"> Submit css </button>
           </div>
 
           <div class="row" style="height: auto; justify-content: center; padding-top: 20px">

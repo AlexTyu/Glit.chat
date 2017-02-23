@@ -22,7 +22,8 @@ app.controller("main", function($scope) {
             bgImage: $scope.options.bgImage,
             wrapperAnimation: $scope.options.wrapperAnimation,
             popup: $scope.options.popup,
-            popuptext: $scope.options.popuptext
+            popuptext: $scope.options.popuptext,
+            LiveCss: $scope.options.LiveCss
         });
     }
 
