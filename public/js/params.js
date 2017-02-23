@@ -9,6 +9,8 @@ app.controller("main", function($scope) {
     $scope.bgcolor = "black";
     $scope.textcolor = "white";
 
+    $scope.promt = false;
+
     var $messages = document.getElementById('messages');
 
     $scope.socket.on('messages', function(data) {

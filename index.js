@@ -15,12 +15,23 @@ app.use(express.static(__dirname + '/public'));
 var messages = [
     {
         user: "0",
-        text: "Hello",
-        color: "red"
+        text: "[103.231.481.213]. Ping 424ms",
+        color: "red",
+    },
+    {
+        user: "0",
+        text: "Connection established",
+        color: "red",
+    },
+    {
+        user: "0",
+        text: "ОLEГ",
+        color: "red",
+        size: "40"
     },
     {
         user: "1",
-        text: "Are you there",
+        text: "Are you there?",
         color: "white"
     },
     {
@@ -30,7 +41,7 @@ var messages = [
     }
 ];
 
-var TEXT_COLOR = "#000000";
+var TEXT_COLOR = "#fff";
 var SIZE = 16;
 var BGIMAGE = "";
 var BGCOLOR = "";

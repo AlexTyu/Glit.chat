@@ -35,13 +35,13 @@
           <div class="row">
             <form ng-submit="sendMessage()" style="display: flex; flex-grow: 1">
                 <div class="row">
-                  <input ng-model="messageText" style="flex-grow: 1"/>
+                  <input type="text" ng-model="messageText" style="flex-grow: 1"/>
                 </div>
                 <div class="row">
-                  <input ng-model="messageColor" type="color" style="flex-grow: 1"/>
+                  <input ng-model="messageColor" type="color"/>
                 </div>
                 <!-- <div class="row">
-                  <input ng-model="messageSize" type="text" style="flex-grow: 1"/>
+                  <input type="number" ng-model="messageSize"/>
                 </div> -->
             </form>
           </div>
@@ -69,6 +69,8 @@
             <input ng-model="bgimage" style="flex-grow: 1" ng-change="updateBgImage()"/>
           </div>
 
+          <h3> Promt </h3>
+          <button ng-model="promt"> Activate Promt </button>
           <!-- <div class="row" style="height: 300px;">
             <input type="textarea" placeholder="Notes" style="flex-grow: 1; height: 100%">
           </row> -->
