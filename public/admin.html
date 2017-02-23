@@ -16,18 +16,29 @@
 
 <body class="admin" ng-app="beetchat" ng-controller="main">
     <div class="beetchat" style="font-size: {{size}}px; color: {{textcolor}}; background-color: {{bgcolor}}; background-image: url({{bgimage}})">
+      <div class="statusbar"></div>
         <div>
-            <div class="messages" id="messages">
-                <div class="message" ng-repeat="message in messages">
-                    <p style="color: {{ message.color }}; font-size{{message.size}}px">
-                        <span ng-if="message.user !== 1">></span>
-                        {{ message.text }}
-                    </p>
-                </div>
-            </div>
+          <div class="messages" id="messages">
+              <div class="message" ng-repeat="message in messages">
+                  <p style="color: {{ message.color }}; font-size{{message.size}}px">
+                      <span ng-if="message.user !== 1">></span>
+                      {{ message.text }}
+                  </p>
+              </div>
+
+                <form  ng-submit="sendMessage()" style="display: flex; flex-grow: 1">
+                    <div class="row">
+                      <input class="message" ng-model="messageText" style="flex-grow: 1"/>
+                      <span class="blinker"><span>
+                    </div>
+                </form>
+          </div>
         </div>
 
-        <div class="prompt">
+        <div class="prompt-wrapper" ng-if="popup == true">
+          <div class="prompt">
+            <h2> Pizedc tebe, OLEГ </h2>
+          </div>
         </div>
     </div>
     <div class="Control-panel">
@@ -69,8 +80,9 @@
             <input ng-model="bgimage" style="flex-grow: 1" ng-change="updateBgImage()"/>
           </div>
 
-          <h3> Promt </h3>
-          <button ng-model="promt"> Activate Promt </button>
+          <h3> Popup </h3>
+          <button ng-click="popup = true; updatePopup()"> Activate</button>
+          <button ng-click="popup = false; updatePopup()"> Disable</button>
           <!-- <div class="row" style="height: 300px;">
             <input type="textarea" placeholder="Notes" style="flex-grow: 1; height: 100%">
           </row> -->

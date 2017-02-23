@@ -9,7 +9,7 @@ app.controller("main", function($scope) {
     $scope.bgcolor = "black";
     $scope.textcolor = "white";
 
-    $scope.promt = false;
+    $scope.popup = false;
 
     var $messages = document.getElementById('messages');
 
@@ -73,6 +73,12 @@ app.controller("main", function($scope) {
         $scope.textcolor = data.textcolor;
         $scope.$apply();
     })
+
+    $scope.updatePopup = function() {
+        $scope.socket.emit("textcolor", {
+            textcolor: $scope.textcolor
+        });
+    }
 
 
 });
