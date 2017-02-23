@@ -23,16 +23,12 @@
     <style>
       {{LiveCss}}
     </style>
-    <div ng-init="user = 1;" class="beetchat" style="color: {{textcolor}}; font-size: {{size}}px; background-image: url({{bgimage}}); animation-name: {{wrapperAnimation}}" >
-      <div class="general-wrapper" style="animation-name: {{wrapperAnimation}}">
+    <div ng-init="user = 1;" class="beetchat" style="color: {{options.textColor}}; font-size: {{options.textSize}}px; background-color: {{options.bgColor}}; background-image: url({{options.bgImage}})" >
+      <div class="general-wrapper">
         <div class="messages" id="messages">
           <div class="message" ng-repeat="message in messages">
-              <p ng-if="message.user == 1" style="color: {{ clientTextColor }}; font-size{{message.size}}px">
-                  {{ message.text }}
-              </p>
-
-              <p ng-if="message.user !== 1" style="color: {{ message.color }}; font-size{{message.size}}px">
-                  <span>></span>
+              <p style="color: {{ message.textColor }}; font-size: {{message.textSize}}px">
+                  <span ng-if="message.user != 1">></span>
                   {{ message.text }}
               </p>
           </div>

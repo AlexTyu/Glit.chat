@@ -48,23 +48,22 @@
           </div>
         </div>
     </div>
-    <div class="Control-panel" ng-init="messageColor == 'red'">
+    <div class="Control-panel"  ng-init="messageColor == 'red'">
 
           <div class="row">
             <label> Default Text color </label>
-            <input type="color" ng-model="adminTextColor" ng-change="updateTextColor()">
+            <input type="color" ng-change="updateOptions()" ng-model="options.textColor">
           </div>
 
           <div class="row">
             <label> Default Text size </label>
-            <input type="range" ng-model="size" ng-change="updateSize()" style="flex-grow: 1">
+            <input type="range" ng-change="updateOptions()"  ng-model="options.textSize" style="flex-grow: 1">
           </div>
 
           <div class="row">
             <label> Background</label>
-            <input type="color" ng-model="bgcolor" ng-change="updateBgColor()" style="margin-right: 20px;">
-            <input ng-model="bgimage" style="flex-grow: 1" ng-change="updateBgImage()"/>
-            <select ng-model="bgimage" ng-change="updateBgImage()" style="margin-left: 20px;">
+            <input type="color" ng-model="options.bgColor" ng-change="updateOptions()" style="margin-right: 20px;">
+            <select ng-model="options.bgImage" ng-change="updateOptions()" style="margin-left: 20px;">
               <option value="">none</option>
               <option value="http://49.media.tumblr.com/79222e3f67bc37408e9a6825f5eb2188/tumblr_o4at51bG4M1s4fz4bo1_500.gif">Glitch 1</option>
               <option value="http://alexturin.co/files/ezgif-2-3348135e2c.gif">Oleg 1</option>
@@ -77,12 +76,10 @@
               <option value="https://68.media.tumblr.com/4084416ad980b506942e41133d430c0b/tumblr_ohhcpcI8Bq1vbuge9o1_500.gif">8</option>
               <option value="http://static4.worldofwonder.net/wp-content/uploads/2013/07/tumblr_ml4pulwGcf1qd5eico1_250.gif">9</option>
               <option value="https://media.giphy.com/media/9Nvlc0728SnGE/giphy.gif">10</option>
-
-
             </select>
           </div>
 
-          <div class="row">
+          <!-- <div class="row">
             <label> Prompt </label>
             <input type="text" ng-model="popupText" ng-change="updatePopupText()" style="flex-grow: 1"/>
             <input type="checkbox" ng-model="popup"> <span style="color: white"> Preview </span>
@@ -106,12 +103,13 @@
             </label>
             <textarea ng-model="LiveCss" style="flex-grow: 1; height: 100px"/></textarea>
             <button ng-click="submitCss()" style="position: absolute; bottom: 10px; right: 10px;"> Submit css </button>
-          </div>
+          </div> -->
 
           <div class="row" style="height: auto; justify-content: center; padding-top: 20px">
             <form ng-submit="sendMessage()" style="display: flex; flex-grow: 1">
-                  <input type="text" placeholder="Message" ng-model="messageText" style="flex-grow: 1; height: 40px;" ng-change="updateMessageText()"/>
-                  <input ng-model="messageColor" type="color" style="margin-left: 20px;"/>
+                  <input type="text" placeholder="Message" ng-model="message.text" style="flex-grow: 1; height: 40px;" ng-change="updateMessageText()"/>
+                  <input ng-model="message.textColor" type="color" style="margin-left: 20px;"/>
+                  <input ng-model="message.textSize" type="range">
                 <!-- <div class="row">
                   <input type="number" ng-model="messageSize"/>
                 </div> -->
