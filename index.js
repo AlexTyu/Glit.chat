@@ -16,23 +16,24 @@ var messages = [
     {
         user: "0",
         text: "Hello",
-        color: ""
+        color: "red"
     },
     {
         user: "1",
         text: "Are you there",
-        color: ""
+        color: "white"
     },
     {
         user: "0",
         text: "Why do you think you can trust them?",
-        color: ""
+        color: "white"
     }
 ];
 
-var BG_COLOR = "#ff0000";
+var TEXT_COLOR = "#000000";
 var SIZE = 16;
-var BGIMAGE = "https://s-media-cache-ak0.pinimg.com/originals/64/d7/27/64d727cedf86f5c82d125e7c14d27134.jpg";
+var BGIMAGE = "";
+var BGCOLOR = "";
 
 io.on('connection', function (socket) {
 
@@ -46,12 +47,7 @@ io.on('connection', function (socket) {
     }
 
     function emitOptions() {
-        socket.emit('color', {
-            color: BG_COLOR
-        });
-        socket.broadcast.emit('color', {
-            color: BG_COLOR
-        });
+
         socket.emit('size', {
             size: SIZE
         });
@@ -64,6 +60,21 @@ io.on('connection', function (socket) {
         socket.broadcast.emit('bgimage', {
             bgimage: BGIMAGE
         });
+
+        socket.emit('textcolor', {
+            textcolor: TEXT_COLOR
+        });
+
+        socket.broadcast.emit('textcolor', {
+            textcolor: TEXT_COLOR
+        });
+
+        socket.emit('bgcolor', {
+            bgcolor: BGCOLOR
+        });
+        socket.broadcast.emit('bgcolor', {
+            bgcolor: BGCOLOR
+        });
     }
 
     socket.on('new message', function(message) {
@@ -71,8 +82,13 @@ io.on('connection', function (socket) {
         emitMessages();
     });
 
-    socket.on('color', function(data) {
-        BG_COLOR = data.color;
+    socket.on('textcolor', function(data) {
+        TEXT_COLOR = data.textcolor;
+        emitOptions();
+    });
+
+    socket.on('bgcolor', function(data) {
+        BG_COLOR = data.bgcolor;
         emitOptions();
     });
 

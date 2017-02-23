@@ -9,7 +9,7 @@
     <link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
     <link href="apple-touch-startup-image-320x460.png" media="screen and (min-device-width: 200px) and (max-device-width: 1024px)" rel="apple-touch-startup-image">
     <link href="apple-touch-startup-image-375x667.png" media="screen and (min-device-width: 375px) and (max-device-width: 1024px)" rel="apple-touch-startup-image">
-    <title>Beet Chat</title>
+    <title>Client</title>
     <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:200,300,400,500,600,700,900" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,23 +19,26 @@
 
 <script src="js/params.js"></script>
 
-
-<body ng-app="beetchat" ng-controller="main" style="color: {{color}}; font-size: {{size}}px;">
-    <div class="beetchat" style="background-image: url({{bgimage}})" >
+<body ng-app="beetchat" ng-controller="main" style="color: {{textcolor}}; font-size: {{size}}px;">
+    <div ng-init="user = 1;" class="beetchat" style="background-image: url({{bgimage}})" >
         <div>
-            <div class="messages" id="messages">
-                <div ng-repeat="message in messages">
-                    <p>
-                        <span ng-if="message.user !== 1">></span>
-                        {{ message.text }}
-                    </p>
-                </div>
-            </div>
-            <div class="form">
-                <form ng-submit="sendMessage()">
-                    <input ng-model="message"/>
-                </form>
-            </div>
+          <div>
+              <div class="messages" id="messages">
+                  <div class="message" ng-repeat="message in messages">
+                      <p style="color: {{ message.color }}; font-size{{message.size}}px">
+                          <span ng-if="message.user !== 1">></span>
+                          {{ message.text }}
+                      </p>
+                  </div>
+
+                    <form  ng-submit="sendMessage()" style="display: flex; flex-grow: 1">
+                        <div class="row">
+                          <input class="message" ng-model="messageText" style="flex-grow: 1"/>
+                          <span class="blinker"><span>
+                        </div>
+                    </form>
+              </div>
+          </div>
         </div>
     </div>
 </body>

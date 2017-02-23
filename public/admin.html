@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Beet Chat</title>
+    <title>Admin</title>
     <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:200,300,400,500,600,700,900" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,35 +15,52 @@
 
 
 <body class="admin" ng-app="beetchat" ng-controller="main">
-    <div class="beetchat" style="color: {{color}}; font-size: {{size}}px; background-image: url({{bgimage}})">
+    <div class="beetchat" style="font-size: {{size}}px; color: {{textcolor}}; background-color: {{bgcolor}}; background-image: url({{bgimage}})">
         <div>
             <div class="messages" id="messages">
-                <div ng-repeat="message in messages">
-                    <p>
-                        <span ng-if="message.user !== 1" style="color: {{ message.color }}">></span>
+                <div class="message" ng-repeat="message in messages">
+                    <p style="color: {{ message.color }}; font-size{{message.size}}px">
+                        <span ng-if="message.user !== 1">></span>
                         {{ message.text }}
                     </p>
                 </div>
             </div>
         </div>
+
+        <div class="prompt">
+        </div>
     </div>
     <div class="Control-panel">
           <h3> Message </h3>
           <div class="row">
-            <form ng-submit="sendMessage() " style="display: flex; flex-grow: 1">
-                <input ng-model="message" style="flex-grow: 1"/>
-                
+            <form ng-submit="sendMessage()" style="display: flex; flex-grow: 1">
+                <div class="row">
+                  <input ng-model="messageText" style="flex-grow: 1"/>
+                </div>
+                <div class="row">
+                  <input ng-model="messageColor" type="color" style="flex-grow: 1"/>
+                </div>
+                <!-- <div class="row">
+                  <input ng-model="messageSize" type="text" style="flex-grow: 1"/>
+                </div> -->
             </form>
           </div>
 
+
+
           <h3> Global Settings </h3>
           <div class="row">
-            <label> Text color </label>
-            <input type="color" ng-model="color" ng-change="updateColor()">
+            <label> Bg color </label>
+            <input type="color" ng-model="bgcolor" ng-change="updateBgColor()">
           </div>
 
           <div class="row">
-            <label> Text size </label>
+            <label> Default Text color </label>
+            <input type="color" ng-model="textcolor" ng-change="updateTextColor()">
+          </div>
+
+          <div class="row">
+            <label> Default Text size </label>
             <input type="range" ng-model="size" ng-change="updateSize()" style="flex-grow: 1">
           </div>
 
@@ -51,6 +68,10 @@
             <label> Bg image </label>
             <input ng-model="bgimage" style="flex-grow: 1" ng-change="updateBgImage()"/>
           </div>
+
+          <!-- <div class="row" style="height: 300px;">
+            <input type="textarea" placeholder="Notes" style="flex-grow: 1; height: 100%">
+          </row> -->
     </div>
 </body>
 

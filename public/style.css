@@ -31,7 +31,11 @@ html:before {
   padding: 20px;
   background-size: auto 100%;
   background-position: center;
+  overflow: hidden;
+  position: relative;
 }
+
+
 
 label, h3{
   font-family: helvetica;
@@ -43,10 +47,12 @@ label{
 }
 
 .messages {
+    overflow: scroll;
     padding-bottom: 50px;
     -webkit-overflow-scrcoll: touch;
     height: calc(100vh - 50px);
     position: absolute;
+    bottom: 0;
     width: 100%;
     z-index: 1;
     position: relative;
@@ -54,26 +60,64 @@ label{
 }
 
 
-.form {
+@keyframes text-pointer{
+  0% {opacity: 0}
+  50% {opacity: 0}
+  51% {opacity: 1}
+  100% {opacity: 1}
+}
+
+
+.send-message {
     height: 50px;
-    position: fixed;
     bottom: 0;
+    left: 0;
     z-index: 1;
     width: 100%;
-    background: #000;
     padding: 0 10px;
+    display: flex;
+    flex-grow: 1;
+    box-sizing: border-box;
+    border: 1px solid aqua;
 }
-.form input {
+
+form{
+  flex-grow: 1;
+  position: relative;
+}
+input.message{
     border: none;
-    border-bottom: 1px white solid;
+    flex-grow: 1;
     border-radius: 0;
     box-sizing: border-box;
-    background: #000 !important;
+    background: transparent !important;
     width: 100%;
     display: block;
     height: 40px;
     color: #fff;
     outline: none;
+    position: relative;
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+input:focus +.blinker{
+    display: none;
+}
+
+.blinker{
+  width: 1px;
+  height: 20px;
+  background: red;
+  position: absolute;
+  font-size: 18px;
+  top: 10px;
+  left: 5px;
+  color: white;
+  animation-name: text-pointer;
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
 }
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
@@ -104,7 +148,7 @@ body.admin .beetchat{
     background-color: black;
     margin-top: 20px;
     margin-left: 20px;
-    border-radius: 4px;
+    border-radius: 6px;
     padding: 20px;
 }
 

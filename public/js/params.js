@@ -5,8 +5,9 @@ app.controller("main", function($scope) {
     $scope.message = "";
     $scope.user = 0;
 
-    $scope.color = "";
-    $scope.bgimage = "https://s-media-cache-ak0.pinimg.com/originals/64/d7/27/64d727cedf86f5c82d125e7c14d27134.jpg";
+    $scope.bgimage = "none";
+    $scope.bgcolor = "black";
+    $scope.textcolor = "white";
 
     var $messages = document.getElementById('messages');
 
@@ -19,31 +20,13 @@ app.controller("main", function($scope) {
     $scope.sendMessage = function() {
         $scope.socket.emit("new message", {
             user: $scope.user,
-            text: $scope.message
+            text: $scope.messageText,
+            color: $scope.messageColor,
+            size: $scope.messageSize
         });
         $scope.message = "";
     }
 
-    $scope.socket.on('color', function(data) {
-        $scope.color = data.color;
-        $scope.$apply();
-    })
-
-    $scope.socket.on('size', function(data) {
-        $scope.size = data.size;
-        $scope.$apply();
-    })
-
-    $scope.socket.on('bgimage', function(data) {
-        $scope.bgimage = data.bgimage;
-        $scope.$apply();
-    })
-
-    $scope.updateColor = function() {
-        $scope.socket.emit("color", {
-            color: $scope.color
-        });
-    }
 
     $scope.updateSize = function() {
         $scope.socket.emit("size", {
@@ -51,11 +34,43 @@ app.controller("main", function($scope) {
         });
     }
 
+    $scope.socket.on('size', function(data) {
+        $scope.size = data.size;
+        $scope.$apply();
+    })
+
     $scope.updateBgImage = function() {
         $scope.socket.emit("bgimage", {
             bgimage: $scope.bgimage
         });
     }
+
+    $scope.socket.on('bgimage', function(data) {
+        $scope.bgimage = data.bgimage;
+        $scope.$apply();
+    })
+
+    $scope.updateBgColor = function() {
+        $scope.socket.emit("bgcolor", {
+            bgcolor: $scope.bgcolor
+        });
+    }
+
+    $scope.socket.on('bgcolor', function(data) {
+        $scope.bgcolor = data.bgcolor;
+        $scope.$apply();
+    })
+
+    $scope.updateTextColor = function() {
+        $scope.socket.emit("textcolor", {
+            textcolor: $scope.textcolor
+        });
+    }
+
+    $scope.socket.on('textcolor', function(data) {
+        $scope.textcolor = data.textcolor;
+        $scope.$apply();
+    })
 
 
 });
