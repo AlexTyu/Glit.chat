@@ -1,149 +1,123 @@
-/* Fix user-agent */
-
-* {
-  box-sizing: border-box;
+html{
+    -webkit-text-size-adjust: none;
+    overflow: hidden;
+}
+body {
+    transition: all 0.5s ease;
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 100;
+    margin: 0;
+    display: flex;
+}
+html:before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    /*background-image: url('/bg.jpg');*/
+    background-size: contain;
+    background-position: top center;
+    background-repeat: no-repeat;
+    z-index: 0;
 }
 
-html {
-  font-weight: 300;
-  -webkit-font-smoothing: antialiased;
-}
-
-html, input {
-  font-family:
-    "HelveticaNeue-Light",
-    "Helvetica Neue Light",
-    "Helvetica Neue",
-    Helvetica,
-    Arial,
-    "Lucida Grande",
-    sans-serif;
-}
-
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-ul {
-  list-style: none;
-  word-wrap: break-word;
-}
-
-/* Pages */
-
-.pages {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+.beetchat{
   width: 100%;
-}
-
-.page {
   height: 100%;
-  position: absolute;
-  width: 100%;
+  background-color: black;
+  padding: 20px;
+  background-size: contain;
+  background-position: center;
 }
 
-/* Login Page */
-
-.login.page {
-  background-color: #000;
+label, h3{
+  font-family: helvetica;
 }
 
-.login.page .form {
-  height: 100px;
-  margin-top: -100px;
-  position: absolute;
-
-  text-align: center;
-  top: 50%;
-  width: 100%;
-}
-
-.login.page .form .usernameInput {
-  background-color: transparent;
-  border: none;
-  border-bottom: 2px solid #fff;
-  outline: none;
-  padding-bottom: 15px;
-  text-align: center;
-  width: 400px;
-}
-
-.login.page .title {
-  font-size: 200%;
-}
-
-.login.page .usernameInput {
-  font-size: 200%;
-  letter-spacing: 3px;
-}
-
-.login.page .title, .login.page .usernameInput {
-  color: #fff;
-  font-weight: 100;
-}
-
-/* Chat page */
-
-.chat.page {
-  display: none;
-}
-
-/* Font */
-
-.messages {
-  font-size: 150%;
-}
-
-.inputMessage {
-  font-size: 100%;
-}
-
-.log {
-  color: gray;
-  font-size: 70%;
-  margin: 5px;
-  text-align: center;
-}
-
-/* Messages */
-
-.chatArea {
-  height: 100%;
-  padding-bottom: 60px;
+label{
+  font-weight: 400;
+  margin-right: 30px;
 }
 
 .messages {
-  height: 100%;
-  margin: 0;
-  overflow-y: scroll;
-  padding: 10px 20px 10px 20px;
+    padding-bottom: 50px;
+    -webkit-overflow-scrcoll: touch;
+    height: calc(100vh - 50px);
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    position: relative;
+    overflow: auto;
 }
 
-.message.typing .messageBody {
-  color: gray;
+
+.form {
+    height: 50px;
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+    width: 100%;
+    background: #000;
+    padding: 0 10px;
+}
+.form input {
+    border: none;
+    border-bottom: 1px white solid;
+    border-radius: 0;
+    box-sizing: border-box;
+    background: #000 !important;
+    width: 100%;
+    display: block;
+    height: 40px;
+    color: #fff;
+    outline: none;
 }
 
-.username {
-  font-weight: 700;
-  overflow: hidden;
-  padding-right: 15px;
-  text-align: right;
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  select:focus,
+  textarea:focus,
+  input:focus {
+    font-size: 16px;
+    background: #eee;
+  }
 }
 
-/* Input */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  select,
+  textarea,
+  input {
+    font-size: 16px;
+  }
+}
 
-.inputMessage {
-  border: 10px solid #000;
-  bottom: 0;
-  height: 60px;
-  left: 0;
-  outline: none;
-  padding-left: 10px;
-  position: absolute;
-  right: 0;
-  width: 100%;
+body.admin{
+    background: gray;
+}
+
+body.admin .beetchat{
+    width: 320px;
+    height: 667px;
+    border: 1px solid gray;
+    background-color: black;
+    margin-top: 20px;
+    margin-left: 20px;
+    border-radius: 4px;
+    padding: 20px;
+}
+
+.Control-panel{
+  z-index: 1000;
+  flex-grow: 1;
+  padding: 30px;
+  position: relative;
+}
+
+.row{
+  flex-grow: 1;
+  height: 50px;
+  display: flex;
+  align-items: center;
 }

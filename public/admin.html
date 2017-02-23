@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Beet Chat</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:200,300,400,500,600,700,900" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="/bower_components/angularjs/angular.min.js"></script>
@@ -19,6 +20,7 @@
         $scope.user = 0;
 
         $scope.color = "";
+        $scope.bgimage = "https://s-media-cache-ak0.pinimg.com/originals/64/d7/27/64d727cedf86f5c82d125e7c14d27134.jpg";
 
         var $messages = document.getElementById('messages');
 
@@ -46,6 +48,11 @@
             $scope.$apply();
         })
 
+        $scope.socket.on('bgimage', function(data) {
+            $scope.bgimage = data.bgimage;
+            $scope.$apply();
+        })
+
         $scope.updateColor = function() {
             $scope.socket.emit("color", {
                 color: $scope.color
@@ -58,102 +65,53 @@
             });
         }
 
+        $scope.updateBgImage = function() {
+            $scope.socket.emit("bgimage", {
+                bgimage: $scope.bgimage
+            });
+        }
+
+
     });
 
 </script>
 
-<style>
-    html{
-        -webkit-text-size-adjust: none;
-        overflow: hidden;
-        background: #000;
-    }
-    html:before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        display: block;
-        width: 100vw;
-        height: 100vh;
-        background-image: url('/bg.jpg');
-        background-size: contain;
-        background-position: top center;
-        background-repeat: no-repeat;
-        z-index: 0;
-    }
 
-    .messages {
-        padding-bottom: 50px;
-        -webkit-overflow-scrcoll: touch;
-        height: calc(100vh - 50px);
-        position: absolute;
-        width: 100%;
-        z-index: 1;
-        position: relative;
-        overflow: auto;
-    }
-    .form {
-        height: 50px;
-        position: fixed;
-        bottom: 0;
-        z-index: 1;
-        width: 100%;
-        background: #000;
-        padding: 0 10px;
-    }
-    .form input {
-        border: none;
-        border-bottom: 1px white solid;
-        border-radius: 0;
-        box-sizing: border-box;
-        background: #000 !important;
-        width: 33%;
-        float: left;
-        display: block;
-        height: 40px;
-        color: #fff;
-        outline: none;
-    }
-
-    @media screen and (-webkit-min-device-pixel-ratio:0) {
-      select:focus,
-      textarea:focus,
-      input:focus {
-        font-size: 16px;
-        background: #eee;
-      }
-    }
-
-    @media screen and (-webkit-min-device-pixel-ratio:0) {
-      select,
-      textarea,
-      input {
-        font-size: 16px;
-      }
-    }
-
-</style>
-
-<body ng-app="beetchat" ng-controller="main" style="color: {{color}}; font-size: {{size}}px">
-    <div class="beetchat" >
+<body class="admin" ng-app="beetchat" ng-controller="main">
+    <div class="beetchat" style="color: {{color}}; font-size: {{size}}px; background-image: url({{bgimage}})">
         <div>
             <div class="messages" id="messages">
                 <div ng-repeat="message in messages">
                     <p>
-                        <span ng-if="message.user !== 1">>></span>
+                        <span ng-if="message.user !== 1">></span>
                         {{ message.text }}
                     </p>
                 </div>
             </div>
-            <div class="form">
-                <form ng-submit="sendMessage()">
-                    <input ng-model="message" />
-                    <input type="color" ng-model="color" ng-change="updateColor()">
-                    <input type="range" ng-model="size" ng-change="updateSize()">
-                </form>
-            </div>
         </div>
+    </div>
+    <div class="Control-panel">
+          <h3> Message </h3>
+          <div class="row">
+            <form ng-submit="sendMessage() " style="display: flex; flex-grow: 1">
+                <input ng-model="message" style="flex-grow: 1"/>
+            </form>
+          </div>
+
+          <h3> Global Settings </h3>
+          <div class="row">
+            <label> Text color </label>
+            <input type="color" ng-model="color" ng-change="updateColor()">
+          </div>
+
+          <div class="row">
+            <label> Text size </label>
+            <input type="range" ng-model="size" ng-change="updateSize()" style="flex-grow: 1">
+          </div>
+
+          <div class="row">
+            <input ng-model="bgimage" style="flex-grow: 1" ng-change="updateBgImage()"/>
+          </div>
     </div>
 </body>
 
