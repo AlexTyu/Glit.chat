@@ -11,70 +11,7 @@
     <script src="/socket.io/socket.io.js"></script>
 </head>
 
-<script>
-    var app = angular.module("beetchat", []);
-
-    app.controller("main", function($scope) {
-        $scope.socket = io();
-        $scope.message = "";
-        $scope.user = 0;
-
-        $scope.color = "";
-        $scope.bgimage = "https://s-media-cache-ak0.pinimg.com/originals/64/d7/27/64d727cedf86f5c82d125e7c14d27134.jpg";
-
-        var $messages = document.getElementById('messages');
-
-        $scope.socket.on('messages', function(data) {
-            $scope.messages = data.messages;
-            $scope.$apply();
-            $messages.scrollTop = $messages.scrollHeight;
-        })
-
-        $scope.sendMessage = function() {
-            $scope.socket.emit("new message", {
-                user: $scope.user,
-                text: $scope.message
-            });
-            $scope.message = "";
-        }
-
-        $scope.socket.on('color', function(data) {
-            $scope.color = data.color;
-            $scope.$apply();
-        })
-
-        $scope.socket.on('size', function(data) {
-            $scope.size = data.size;
-            $scope.$apply();
-        })
-
-        $scope.socket.on('bgimage', function(data) {
-            $scope.bgimage = data.bgimage;
-            $scope.$apply();
-        })
-
-        $scope.updateColor = function() {
-            $scope.socket.emit("color", {
-                color: $scope.color
-            });
-        }
-
-        $scope.updateSize = function() {
-            $scope.socket.emit("size", {
-                size: $scope.size
-            });
-        }
-
-        $scope.updateBgImage = function() {
-            $scope.socket.emit("bgimage", {
-                bgimage: $scope.bgimage
-            });
-        }
-
-
-    });
-
-</script>
+<script src="js/params.js"></script>
 
 
 <body class="admin" ng-app="beetchat" ng-controller="main">
@@ -83,7 +20,7 @@
             <div class="messages" id="messages">
                 <div ng-repeat="message in messages">
                     <p>
-                        <span ng-if="message.user !== 1">></span>
+                        <span ng-if="message.user !== 1" style="color: {{ message.color }}">></span>
                         {{ message.text }}
                     </p>
                 </div>
@@ -95,6 +32,7 @@
           <div class="row">
             <form ng-submit="sendMessage() " style="display: flex; flex-grow: 1">
                 <input ng-model="message" style="flex-grow: 1"/>
+                
             </form>
           </div>
 
@@ -110,6 +48,7 @@
           </div>
 
           <div class="row">
+            <label> Bg image </label>
             <input ng-model="bgimage" style="flex-grow: 1" ng-change="updateBgImage()"/>
           </div>
     </div>

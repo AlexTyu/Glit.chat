@@ -32,6 +32,7 @@ var messages = [
 
 var BG_COLOR = "#ff0000";
 var SIZE = 16;
+var BGIMAGE = "https://s-media-cache-ak0.pinimg.com/originals/64/d7/27/64d727cedf86f5c82d125e7c14d27134.jpg";
 
 io.on('connection', function (socket) {
 
@@ -57,6 +58,12 @@ io.on('connection', function (socket) {
         socket.broadcast.emit('size', {
             size: SIZE
         });
+        socket.emit('bgimage', {
+            bgimage: BGIMAGE
+        });
+        socket.broadcast.emit('bgimage', {
+            bgimage: BGIMAGE
+        });
     }
 
     socket.on('new message', function(message) {
@@ -71,6 +78,11 @@ io.on('connection', function (socket) {
 
     socket.on('size', function(data) {
         SIZE = data.size;
+        emitOptions();
+    });
+
+    socket.on('bgimage', function(data) {
+        BGIMAGE = data.bgimage;
         emitOptions();
     });
 

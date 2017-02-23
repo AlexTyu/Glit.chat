@@ -3,6 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" ,="" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+    <link href="apple-touch-startup-image-320x460.png" media="screen and (min-device-width: 200px) and (max-device-width: 1024px)" rel="apple-touch-startup-image">
+    <link href="apple-touch-startup-image-375x667.png" media="screen and (min-device-width: 375px) and (max-device-width: 1024px)" rel="apple-touch-startup-image">
     <title>Beet Chat</title>
     <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:200,300,400,500,600,700,900" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -11,49 +17,11 @@
     <script src="/socket.io/socket.io.js"></script>
 </head>
 
-<script>
-    var app = angular.module("beetchat", []);
-
-    app.controller("main", function($scope) {
-        $scope.socket = io();
-        $scope.message = "";
-        $scope.user = 1;
-
-        var $messages = document.getElementById('messages');
-        $scope.color = "";
-        $scope.size = 13;
-
-        $scope.socket.on('messages', function(data) {
-            $scope.messages = data.messages;
-            $scope.$apply();
-            $messages.scrollTop = $messages.scrollHeight;
-        })
-
-        $scope.socket.on('color', function(data) {
-            $scope.color = data.color;
-            $scope.$apply();
-        })
-
-        $scope.socket.on('size', function(data) {
-            $scope.size = data.size;
-            $scope.$apply();
-        })
-
-        $scope.sendMessage = function() {
-            $scope.socket.emit("new message", {
-                user: $scope.user,
-                text: $scope.message
-            });
-            $scope.message = "";
-        }
-
-    });
-
-</script>
+<script src="js/params.js"></script>
 
 
-<body ng-app="beetchat" ng-controller="main" style="color: {{color}}; font-size: {{size}}px">
-    <div class="beetchat" >
+<body ng-app="beetchat" ng-controller="main" style="color: {{color}}; font-size: {{size}}px;">
+    <div class="beetchat" style="background-image: url({{bgimage}})" >
         <div>
             <div class="messages" id="messages">
                 <div ng-repeat="message in messages">
@@ -65,7 +33,7 @@
             </div>
             <div class="form">
                 <form ng-submit="sendMessage()">
-                    <input ng-model="message" />
+                    <input ng-model="message"/>
                 </form>
             </div>
         </div>
