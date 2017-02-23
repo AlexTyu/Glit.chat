@@ -46,12 +46,8 @@
     <div class="Control-panel"  ng-init="messageColor == 'red'">
 
           <div class="row">
-            <label> Default Text color </label>
+            <label> Default Text</label>
             <input type="color" ng-change="updateOptions()" ng-model="options.textColor">
-          </div>
-
-          <div class="row">
-            <label> Default Text size </label>
             <input type="range" ng-change="updateOptions()"  ng-model="options.textSize" style="flex-grow: 1">
           </div>
 
@@ -78,7 +74,7 @@
           <div class="row">
             <label> Prompt </label>
             <input type="text" ng-model="options.popuptext" style="flex-grow: 1"/>
-            <input type="checkbox" ng-model="options.popup"> <span style="color: white"> Preview </span>
+            <input type="checkbox" ng-model="options.popup"> <span style="color: white"> Visible </span>
             <button ng-click="updateOptions()" style="margin-left: 20px;"> Submit Pop-up </button>
           </div>
 
