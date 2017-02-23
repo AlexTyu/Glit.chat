@@ -14,14 +14,14 @@ app.use(express.static(__dirname + '/public'));
 
 var messages = [
     {
-        user: "0",
+        user: "1",
         text: "[103.231.481.213]. Ping 424ms",
-        color: "red",
+        color: "gray",
     },
     {
-        user: "0",
+        user: "1",
         text: "Connection established",
-        color: "red",
+        color: "gray",
     },
     {
         user: "0",
@@ -30,21 +30,29 @@ var messages = [
         size: "40"
     },
     {
-        user: "1",
+        user: "0",
         text: "Are you there?",
-        color: "white"
+        color: "red"
     },
     {
         user: "0",
         text: "Why do you think you can trust them?",
-        color: "white"
+        color: "red"
     }
 ];
+var popup = false;
 
-var TEXT_COLOR = "#fff";
+var TEXT_COLOR = "#f00";
 var SIZE = 16;
 var BGIMAGE = "";
 var BGCOLOR = "";
+var POPUP = false;
+var POPUP_TEXT = "Pizdec tebe, OLEfГ"
+
+var WRANIM = "";
+var LIVECSS = "";
+
+var messageText = ""
 
 io.on('connection', function (socket) {
 
@@ -56,6 +64,7 @@ io.on('connection', function (socket) {
             messages: messages
         });
     }
+
 
     function emitOptions() {
 
@@ -72,8 +81,8 @@ io.on('connection', function (socket) {
             bgimage: BGIMAGE
         });
 
-        socket.emit('textcolor', {
-            textcolor: TEXT_COLOR
+        socket.emit('adminTextColor', {
+            adminTextColor: TEXT_COLOR
         });
 
         socket.broadcast.emit('textcolor', {
@@ -86,6 +95,43 @@ io.on('connection', function (socket) {
         socket.broadcast.emit('bgcolor', {
             bgcolor: BGCOLOR
         });
+
+        socket.emit('popup', {
+            popup: POPUP
+        });
+        socket.broadcast.emit('popup', {
+            popup: POPUP
+        });
+
+        socket.emit('popupText', {
+            popupText: POPUP_TEXT
+        });
+        socket.broadcast.emit('popupText', {
+            popupText: POPUP_TEXT
+        });
+
+        socket.emit('wrapperAnimation', {
+            wrapperAnimation: WRANIM
+        });
+        socket.broadcast.emit('wrapperAnimation', {
+            wrapperAnimation: WRANIM
+        });
+
+        socket.emit('LiveCss', {
+            LiveCss: LIVECSS
+        });
+        socket.broadcast.emit('LiveCss', {
+            LiveCss: LIVECSS
+        });
+
+        socket.emit('messageText', {
+            messageText: messageText
+        });
+        socket.broadcast.emit('messageText', {
+            messageText: messageText
+        });
+
+
     }
 
     socket.on('new message', function(message) {
@@ -93,8 +139,9 @@ io.on('connection', function (socket) {
         emitMessages();
     });
 
-    socket.on('textcolor', function(data) {
-        TEXT_COLOR = data.textcolor;
+
+    socket.on('adminTextColor', function(data) {
+        TEXT_COLOR = data.adminTextColor;
         emitOptions();
     });
 
@@ -112,6 +159,34 @@ io.on('connection', function (socket) {
         BGIMAGE = data.bgimage;
         emitOptions();
     });
+
+    socket.on('popup', function(data) {
+        POPUP = data.popup;
+        emitOptions();
+    });
+
+    socket.on('popupText', function(data) {
+        POPUP_TEXT = data.popupText;
+        emitOptions();
+    });
+
+    socket.on('messageText', function(data) {
+        messageText = data.messageText;
+        emitOptions();
+    });
+
+    socket.on('wrapperAnimation', function(data) {
+        WRANIM = data.wrapperAnimation;
+        emitOptions();
+    });
+
+    socket.on('LiveCss', function(data) {
+        LIVECSS = data.LiveCss;
+        emitOptions();
+    });
+
+
+
 
     emitMessages();
     emitOptions();

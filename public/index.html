@@ -19,27 +19,38 @@
 
 <script src="js/params.js"></script>
 
-<body ng-app="beetchat" ng-controller="main" style="color: {{textcolor}}; font-size: {{size}}px;">
-    <div ng-init="user = 1;" class="beetchat" style="background-image: url({{bgimage}})" >
-        <div>
-          <div>
-              <div class="messages" id="messages">
-                  <div class="message" ng-repeat="message in messages">
-                      <p style="color: {{ message.color }}; font-size{{message.size}}px">
-                          <span ng-if="message.user !== 1">></span>
-                          {{ message.text }}
-                      </p>
-                  </div>
+<body ng-app="beetchat" ng-controller="main">
+    <style>
+      {{LiveCss}}
+    </style>
+    <div ng-init="user = 1;" class="beetchat" style="color: {{textcolor}}; font-size: {{size}}px; background-image: url({{bgimage}}); animation-name: {{wrapperAnimation}}" >
+      <div class="general-wrapper" style="animation-name: {{wrapperAnimation}}">
+        <div class="messages" id="messages">
+          <div class="message" ng-repeat="message in messages">
+              <p ng-if="message.user == 1" style="color: {{ clientTextColor }}; font-size{{message.size}}px">
+                  {{ message.text }}
+              </p>
 
-                    <form  ng-submit="sendMessage()" style="display: flex; flex-grow: 1">
-                        <div class="row">
-                          <input class="message" ng-model="messageText" style="flex-grow: 1"/>
-                          <span class="blinker"><span>
-                        </div>
-                    </form>
-              </div>
+              <p ng-if="message.user !== 1" style="color: {{ message.color }}; font-size{{message.size}}px">
+                  <span>></span>
+                  {{ message.text }}
+              </p>
           </div>
+
+              <form ng-submit="sendMessage()" style="display: flex; flex-grow: 1">
+                  <div class="row">
+                    <input class="message" ng-model="messageText" style="flex-grow: 1"  ng-change="updateMessageText()"/>
+                    <span class="blinker"><span>
+                  </div>
+              </form>
         </div>
+      </div>
+
+      <div class="prompt-wrapper" ng-if="popup == true">
+        <div class="prompt">
+          <h2> {{popupText}} </h2>
+        </div>
+      </div>
     </div>
 </body>
 
