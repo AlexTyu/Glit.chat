@@ -5,6 +5,7 @@ var Socket = io();
 app.controller("main", function($scope) {
     $scope.user = 0;
 
+
     var $messages = document.getElementById('messages');
 
     Socket.on('messages', function(data) {
@@ -18,7 +19,10 @@ app.controller("main", function($scope) {
             textColor: $scope.options.textColor,
             textSize: $scope.options.textSize,
             bgColor: $scope.options.bgColor,
-            bgImage: $scope.options.bgImage
+            bgImage: $scope.options.bgImage,
+            wrapperAnimation: $scope.options.wrapperAnimation,
+            popup: $scope.options.popup,
+            popuptext: $scope.options.popuptext
         });
     }
 

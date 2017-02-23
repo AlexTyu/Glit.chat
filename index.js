@@ -42,10 +42,11 @@ var MESSAGES = [
 ];
 
 var OPTIONS = {
-    textColor: "#000000",
+    textColor: "#f00",
     textSize: 16,
     bgColor: "#000000",
-    bgImage: "none"
+    bgImage: "none",
+    wrapperAnimation: "none"
 };
 
 var TEXT_COLOR = "#f00";

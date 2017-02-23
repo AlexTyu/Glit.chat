@@ -23,8 +23,8 @@
     <style>
       {{LiveCss}}
     </style>
-    <div ng-init="user = 1;" class="beetchat" style="color: {{options.textColor}}; font-size: {{options.textSize}}px; background-color: {{options.bgColor}}; background-image: url({{options.bgImage}})" >
-      <div class="general-wrapper">
+    <div ng-init="user = 1" class="beetchat">
+      <div class="general-wrapper" style="color: {{options.textColor}}; font-size: {{options.textSize}}px; background-color: {{options.bgColor}}; background-image: url({{options.bgImage}}); animation-name: {{options.wrapperAnimation}}">
         <div class="messages" id="messages">
           <div class="message" ng-repeat="message in messages">
               <p style="color: {{ message.textColor }}; font-size: {{message.textSize}}px">
@@ -42,9 +42,9 @@
         </div>
       </div>
 
-      <div class="prompt-wrapper" ng-if="popup == true">
+      <div class="prompt-wrapper" ng-if="options.popup == true">
         <div class="prompt">
-          <h2> {{popupText}} </h2>
+          <h2> {{options.popuptext}} </h2>
         </div>
       </div>
     </div>
