@@ -8,6 +8,7 @@
   "license": "BSD",
   "dependencies": {
     "bower": "^1.7.9",
-    "express": "4.13.4"
+    "express": "4.13.4",
+    "socket.io": "^1.7.3"
   }
 }
