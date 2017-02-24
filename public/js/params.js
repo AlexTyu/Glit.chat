@@ -3,6 +3,8 @@ var Socket = io();
 
 app.controller("main", function($scope) {
 
+    $scope.message = {};
+
     Socket.on('messages', function(data) {
         $scope.messages = data.messages;
         $scope.$apply();
@@ -28,6 +30,8 @@ app.controller("main", function($scope) {
             inputText: $scope.message.text
         });
     }
+
+
 
     $scope.sendMessage = function() {
         Socket.emit("new message", {
