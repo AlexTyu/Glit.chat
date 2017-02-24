@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" ,="" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Add to Home">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
     <link href="apple-touch-startup-image-320x460.png" media="screen and (min-device-width: 200px) and (max-device-width: 1024px)" rel="apple-touch-startup-image">
@@ -16,6 +17,13 @@
     <script src="/bower_components/angularjs/angular.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/params.js"></script>
+
+    <link rel="addtohomescreen.css">
+    <script src="js/addtohomescreen.js"></script>
+    <script>
+    addToHomescreen({detectHomescreen: true});
+    </script>
+
 </head>
 
 <body ng-app="beetchat" ng-controller="main">
@@ -26,14 +34,17 @@
         <div class="general-wrapper" style="color: {{options.textColor}}; font-size: {{options.textSize}}px; background-color: {{options.bgColor}}; background-image: url({{options.bgImage}}) ; animation-name: {{options.wrapperAnimation}}">
             <div class="messages" id="messages">
                 <div class="message" ng-repeat="message in messages">
-                <p style="color: {{ message.textColor }}; font-size: {{message.textSize}}px">
-                    <span ng-if="message.user != 1">></span>
+                <p ng-if="message.user !== 1"style="color: {{ message.textColor }}; font-size: {{message.textSize}}px">
+                    <span>></span>{{ message.text }}
+                </p>
+
+                <p ng-if="message.user == 1" style="color: white; font-size: {{message.textSize}}px">
                     {{ message.text }}
                 </p>
             </div>
             <form ng-submit="sendMessage()" style="display: flex; flex-grow: 1">
                 <div class="row">
-                    <input class="message" ng-attr-placeholder="{{options.inputText}}" ng-model="message.text" style="flex-grow: 1"  ng-change="updateOptions()"/>
+                    <input class="message" ng-attr-placeholder=">{{options.inputText}}" ng-model="message.text" style="flex-grow: 1"  ng-change="updateOptions()"/>
                     <span class="blinker"><span>
                 </div>
             </form>

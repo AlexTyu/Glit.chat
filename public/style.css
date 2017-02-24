@@ -72,8 +72,6 @@ html:before {
 
 
 
-
-
 label{
   font-weight: 400;
   margin-right: 30px;
@@ -92,6 +90,10 @@ label{
     padding: 20px;
     position: relative;
     overflow: auto;
+}
+
+.message p{
+    margin: 3px 0px;
 }
 
 .prompt-wrapper{
