@@ -26,6 +26,11 @@ html:before {
     z-index: 0;
 }
 
+@keyframes mirror{
+  0% {transform: scaleX(-1)}
+  100% {transform: scaleX(-1)}
+  }
+
 @keyframes tvoff{
   0% {transform: scaleY(1) scaleX(1); background: transparent; }
   60% {transform: scaleY(0.002) scaleX(1); background: white;}
@@ -105,7 +110,7 @@ label{
   width: 100%;
   top: 0;
   left: 0;
-  mix-blend-mode: hard-light;
+  /*mix-blend-mode: hard-light;*/
   /*background-image: url("https://static1.squarespace.com/static/56dcbf88555986f25c72cd9a/570958f7859fd0f69a265ffb/570959b6cf80a1b2994e2a04/1460433666675/Thermal-Drink-Small.gif?format=1500w");*/
   background-image: url("http://49.media.tumblr.com/79222e3f67bc37408e9a6825f5eb2188/tumblr_o4at51bG4M1s4fz4bo1_500.gif");
   background-size: auto 100%;
@@ -120,12 +125,10 @@ label{
   left: 0;
   right: 0;
   margin: auto;
-  background: red;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 2000;
-  text-shadow: -2px 0px green, 2px 3px aqua;
 }
 
 
@@ -214,17 +217,22 @@ input:focus +.blinker{
   height: 20px;
   top: 0;
   left: 0;
-  background-image: url("files/statusbar.png");
+  background-image: url("/statusbar.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+body.watch{
+    pointer-events: none;
+    background: #29292c;
 }
 
 body.admin{
     background: #29292c;
 }
 
-body.admin .beetchat{
+body.admin .beetchat, body.watch .beetchat{
     width: 350px;
     height: 630px;
     background-color: black;
@@ -276,4 +284,9 @@ h4{
   display: flex;
   align-items: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
 }

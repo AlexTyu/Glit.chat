@@ -19,55 +19,76 @@
     <!--  preview -->
 
     <div class="Control-panel">
+        <div class="column">
+            <div class="row">
+                <label> Default Text</label>
+                <input type="color" ng-change="updateOptions()" ng-model="options.textColor">
+                <input type="range" ng-change="updateOptions()"  ng-model="options.textSize" style="flex-grow: 1">
+            </div>
 
-        <div class="row">
-            <label> Default Text</label>
-            <input type="color" ng-change="updateOptions()" ng-model="options.textColor">
-            <input type="range" ng-change="updateOptions()"  ng-model="options.textSize" style="flex-grow: 1">
+            <div class="row">
+                <label> Background</label>
+                <input type="color" ng-model="options.bgColor" ng-change="updateOptions()" style="margin-right: 20px;">
+                <input ng-model="options.bgImage" ng-change="updateOptions()" style="flex-grow: 1;">
+                <select ng-model="options.bgImage" ng-change="updateOptions()" style="margin-left: 20px;">
+                    <option value="">none</option>
+                    <option value="http://49.media.tumblr.com/79222e3f67bc37408e9a6825f5eb2188/tumblr_o4at51bG4M1s4fz4bo1_500.gif">Glitch 1</option>
+                    <option value="http://alexturin.co/files/ezgif-2-3348135e2c.gif">Oleg 1</option>
+                    <option value="https://static1.squarespace.com/static/56dcbf88555986f25c72cd9a/570958f7859fd0f69a265ffb/570959b6cf80a1b2994e2a04/1460433666675/Thermal-Drink-Small.gif?format=1500w">Glitch2</option>
+                    <option value="http://data.whicdn.com/images/58708000/large.gif">3</option>
+                    <option value="https://media.giphy.com/media/g2whtH7FXOjPq/giphy.gif">4</option>
+                    <option value="http://4.bp.blogspot.com/-HcL0tsbWMlo/Ul9M73OoRCI/AAAAAAAAAH0/CQh2X9I6TvQ/s400/examplegif.gif">5</option>
+                    <option value="https://media.giphy.com/media/iJVBPp5IIBEY0/giphy.gif">6</option>
+                    <option value="https://s-media-cache-ak0.pinimg.com/originals/3b/ef/f6/3beff69bb8130980259adbfe82a34a80.gif">7</option>
+                    <option value="https://68.media.tumblr.com/4084416ad980b506942e41133d430c0b/tumblr_ohhcpcI8Bq1vbuge9o1_500.gif">8</option>
+                    <option value="http://static4.worldofwonder.net/wp-content/uploads/2013/07/tumblr_ml4pulwGcf1qd5eico1_250.gif">9</option>
+                    <option value="https://media.giphy.com/media/9Nvlc0728SnGE/giphy.gif">10</option>
+                </select>
+            </div>
+
+            <div class="row">
+              <label> Screen Glitch</label>
+              <button ng-click="options.wrapperAnimation = ''; updateOptions()" style="margin-right: 10px">Default</button>
+              <button ng-click="options.wrapperAnimation = 'glitch'; updateOptions()" style="margin-right: 10px">Glitch 1</button>
+              <button ng-click="options.wrapperAnimation = 'tvoff'; updateOptions()" style="margin-right: 10px">TV Off</button>
+              <button ng-click="options.wrapperAnimation = 'tvon'; updateOptions()" style="margin-right: 10px">TV On</button>
+              <button ng-click="options.wrapperAnimation = 'mirror'; updateOptions()" style="margin-right: 10px">Mirror</button>
+
+            </div>
+
+            <div class="row" style="height: auto; position: relative;">
+              <label>Live CSS
+              <span> beetchat, general-wrapper, messages, message, p </span>
+              </label>
+              <textarea ng-model="options.LiveCss" style="flex-grow: 1; height: 100px"/></textarea>
+              <button ng-click="options.LiveCss = ''; updateOptions()" style="position: absolute; bottom: 10px; right: 80px;"> Clear</button>
+              <button ng-click="updateOptions()" style="position: absolute; bottom: 10px; right: 10px;"> Update </button>
+            </div>
+
         </div>
+        <div class="column">
 
-        <div class="row">
-            <label> Background</label>
-            <input type="color" ng-model="options.bgColor" ng-change="updateOptions()" style="margin-right: 20px;">
-            <input ng-model="options.bgImage" ng-change="updateOptions()" style="flex-grow: 1;">
-            <select ng-model="options.bgImage" ng-change="updateOptions()" style="margin-left: 20px;">
-                <option value="">none</option>
-                <option value="http://49.media.tumblr.com/79222e3f67bc37408e9a6825f5eb2188/tumblr_o4at51bG4M1s4fz4bo1_500.gif">Glitch 1</option>
-                <option value="http://alexturin.co/files/ezgif-2-3348135e2c.gif">Oleg 1</option>
-                <option value="https://static1.squarespace.com/static/56dcbf88555986f25c72cd9a/570958f7859fd0f69a265ffb/570959b6cf80a1b2994e2a04/1460433666675/Thermal-Drink-Small.gif?format=1500w">Glitch2</option>
-                <option value="http://data.whicdn.com/images/58708000/large.gif">3</option>
-                <option value="https://media.giphy.com/media/g2whtH7FXOjPq/giphy.gif">4</option>
-                <option value="http://4.bp.blogspot.com/-HcL0tsbWMlo/Ul9M73OoRCI/AAAAAAAAAH0/CQh2X9I6TvQ/s400/examplegif.gif">5</option>
-                <option value="https://media.giphy.com/media/iJVBPp5IIBEY0/giphy.gif">6</option>
-                <option value="https://s-media-cache-ak0.pinimg.com/originals/3b/ef/f6/3beff69bb8130980259adbfe82a34a80.gif">7</option>
-                <option value="https://68.media.tumblr.com/4084416ad980b506942e41133d430c0b/tumblr_ohhcpcI8Bq1vbuge9o1_500.gif">8</option>
-                <option value="http://static4.worldofwonder.net/wp-content/uploads/2013/07/tumblr_ml4pulwGcf1qd5eico1_250.gif">9</option>
-                <option value="https://media.giphy.com/media/9Nvlc0728SnGE/giphy.gif">10</option>
-            </select>
-        </div>
+            <div class="row">
+              <label> Prompt </label>
+                  <input type="checkbox" ng-model="options.popup" style="margin-right: 20px;">
+                  <input type="text"  placeholder="Text" ng-model="options.popuptext" style="flex-grow: 1"/>
+            </div>
+            <div class="row">
+              <input type="text"  placeholder="BG" ng-model="options.popupBg" style="flex-grow: 1; margin-left: 20px;"/>
+              <select ng-model="options.popupBg" style="margin-left: 20px;">
+                  <option value="">Custom</option>
+                  <option value="http://31.media.tumblr.com/2882aced21094e55b8b14eff047141a9/tumblr_mxkbw3fpuU1r8rjf0o1_500.gif">Ready</option>
+                  <option value="https://s3-us-west-2.amazonaws.com/s.cdpn.io/298209/house.png">House</option>
+                  <option value="https://media.giphy.com/media/KlrMS4vyq5KSY/giphy.gif">Bluescreen</option>
+                  <option value="http://49.media.tumblr.com/ef17765f3427f52475490e52aa79be50/tumblr_nlk58cNDT61untn9io1_250.gif">Windows_errors</option>
+                  <option value="">House</option>
+                  <option value="">House</option>
+                  <option value="">House</option>
+                  <option value="https://68.media.tumblr.com/79879b967408af5ee896f61412e8803e/tumblr_o9ngl3ybyt1v3lyz4o1_500.gif">Error</option>
+              </select>
+              <button ng-click="updateOptions()" style="margin-left: 20px;"> Submit Pop-up </button>
+            </div>
 
-        <div class="row">
-          <label> Prompt </label>
-          <input type="checkbox" ng-model="options.popup" style="margin-right: 20px;">
-          <input type="text"  placeholder="Text" ng-model="options.popuptext" style="flex-grow: 1"/>
-          <button ng-click="updateOptions()" style="margin-left: 20px;"> Submit Pop-up </button>
-        </div>
-
-        <div class="row">
-          <label> Screen Glitch</label>
-          <button ng-click="options.wrapperAnimation = ''; updateOptions()" style="margin-right: 10px">–</button>
-          <button ng-click="options.wrapperAnimation = 'glitch'; updateOptions()" style="margin-right: 10px">Glitch 1</button>
-          <button ng-click="options.wrapperAnimation = 'tvoff'; updateOptions()" style="margin-right: 10px">TV Off</button>
-          <button ng-click="options.wrapperAnimation = 'tvon'; updateOptions()" style="margin-right: 10px">TV On</button>
-        </div>
-
-        <div class="row" style="height: auto; position: relative;">
-          <label>Live CSS
-          <span> beetchat, general-wrapper, messages, message, p </span>
-          </label>
-          <textarea ng-model="options.LiveCss" style="flex-grow: 1; height: 100px"/></textarea>
-          <button ng-click="options.LiveCss = ''; updateOptions()" style="position: absolute; bottom: 10px; right: 80px;"> Clear</button>
-          <button ng-click="updateOptions()" style="position: absolute; bottom: 10px; right: 10px;"> Update </button>
         </div>
 
         <div class="row" style="height: auto; justify-content: center; padding-top: 20px">

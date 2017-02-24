@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" ,="" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="Add to Home">
+    <meta name="apple-mobile-web-app-title" content="G5#L¥">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
     <link href="apple-touch-startup-image-320x460.png" media="screen and (min-device-width: 200px) and (max-device-width: 1024px)" rel="apple-touch-startup-image">
@@ -32,6 +32,7 @@
     </style>
     <div ng-init="user = 1" class="beetchat">
         <div class="general-wrapper" style="color: {{options.textColor}}; font-size: {{options.textSize}}px; background-color: {{options.bgColor}}; background-image: url({{options.bgImage}}) ; animation-name: {{options.wrapperAnimation}}">
+            <div class="statusbar"></div>
             <div class="messages" id="messages">
                 <div class="message" ng-repeat="message in messages">
                 <p ng-if="message.user !== 1"style="color: {{ message.textColor }}; font-size: {{message.textSize}}px">
@@ -50,7 +51,7 @@
             </form>
         </div>
     </div>
-    <div class="prompt-wrapper" ng-if="options.popup == true">
+    <div class="prompt-wrapper" ng-if="options.popup == true" style="background-image: url({{options.popupBg}})">
       <div class="prompt">
         <h2> {{options.popuptext}} </h2>
       </div>
