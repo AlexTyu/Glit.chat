@@ -14,20 +14,19 @@ app.use(express.static(__dirname + '/public'));
 
 var MESSAGES = [
     {
-        user: "1",
+        user: "0",
         text: "[103.231.481.213]. Ping 424ms",
         textColor: "gray",
     },
     {
-        user: "1",
+        user: "0",
         text: "Connection established",
         textColor: "gray",
     },
     {
         user: "0",
-        text: "ОLEГ",
+        text: "Hello?",
         textColor: "red",
-        textSize: "40"
     },
     {
         user: "0",
