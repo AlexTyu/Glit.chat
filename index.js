@@ -47,7 +47,8 @@ var OPTIONS = {
     bgColor: "#000000",
     bgImage: "none",
     wrapperAnimation: "none",
-    inputText: ""
+    inputText: "",
+    LiveCss: ""
 };
 
 io.on('connection', function (socket) {

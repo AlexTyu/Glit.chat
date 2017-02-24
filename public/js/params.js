@@ -27,7 +27,8 @@ app.controller("main", function($scope) {
             wrapperAnimation: $scope.options.wrapperAnimation,
             popup: $scope.options.popup,
             popuptext: $scope.options.popuptext,
-            inputText: $scope.message.text
+            inputText: $scope.message.text,
+            LiveCss: $scope.options.LiveCss
         });
     }
 

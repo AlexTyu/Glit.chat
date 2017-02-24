@@ -20,7 +20,7 @@
 
 <body ng-app="beetchat" ng-controller="main">
     <style>
-        {{LiveCss}}
+        {{options.LiveCss}}
     </style>
     <div ng-init="user = 1" class="beetchat">
         <div class="general-wrapper" style="color: {{options.textColor}}; font-size: {{options.textSize}}px; background-color: {{options.bgColor}}; animation-name: {{options.wrapperAnimation}}">
@@ -40,9 +40,9 @@
         </div>
     </div>
     <div class="prompt-wrapper" ng-if="options.popup == true">
-        <div class="prompt">
-            <h2> {{options.popuptext}} </h2>
-        </div>
+      <div class="prompt">
+        <h2> {{options.popuptext}} </h2>
+      </div>
     </div>
 </body>
 
