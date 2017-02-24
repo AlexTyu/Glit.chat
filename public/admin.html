@@ -9,103 +9,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="/bower_components/angularjs/angular.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
+    <script src="js/params.js"></script>
 </head>
 
-<script src="js/params.js"></script>
-
-
-<body class="admin" ng-app="beetchat" ng-controller="main">
+<body class="admin" ng-app="beetchat" ng-controller="main" >
     <style>
-      {{LiveCss}}
+        {{LiveCss}}
     </style>
-    <div class="beetchat">
-      <div class="general-wrapper" style="color: {{options.textColor}}; font-size: {{options.textSize}}px; background-color: {{options.bgColor}}; background-image: url({{options.bgImage}}); animation-name: {{options.wrapperAnimation}}">
-        <div class="messages" id="messages">
-          <div class="message" ng-repeat="message in messages">
-              <p style="color: {{ message.textColor }}; font-size: {{message.textSize}}px">
-                  <span ng-if="message.user != 1">></span>
-                  {{ message.text }}
-              </p>
-          </div>
+    <!--  preview -->
+    <div ng-include="'index.html'"></div>
+    <!--  preview -->
 
-              <form ng-submit="sendMessage()" style="display: flex; flex-grow: 1">
-                  <div class="row">
-                    <input class="message" ng-model="messageText" style="flex-grow: 1"  ng-change="updateMessageText()"/>
-                    <span class="blinker"><span>
-                  </div>
-              </form>
-        </div>
-      </div>
-
-      <div class="prompt-wrapper" ng-if="options.popup == true">
+    <div class="prompt-wrapper" ng-if="options.popup == true">
         <div class="prompt">
-          <h2> {{options.popuptext}} </h2>
+            <h2> {{options.popuptext}} </h2>
         </div>
-      </div>
     </div>
-    <div class="Control-panel"  ng-init="messageColor == 'red'">
 
-          <div class="row">
+    <div class="Control-panel">
+
+        <div class="row">
             <label> Default Text</label>
             <input type="color" ng-change="updateOptions()" ng-model="options.textColor">
             <input type="range" ng-change="updateOptions()"  ng-model="options.textSize" style="flex-grow: 1">
-          </div>
+        </div>
 
-          <div class="row">
+        <div class="row">
             <label> Background</label>
             <input type="color" ng-model="options.bgColor" ng-change="updateOptions()" style="margin-right: 20px;">
             <input ng-model="options.bgImage" ng-change="updateOptions()" style="flex-grow: 1;">
             <select ng-model="options.bgImage" ng-change="updateOptions()" style="margin-left: 20px;">
-              <option value="">none</option>
-              <option value="http://49.media.tumblr.com/79222e3f67bc37408e9a6825f5eb2188/tumblr_o4at51bG4M1s4fz4bo1_500.gif">Glitch 1</option>
-              <option value="http://alexturin.co/files/ezgif-2-3348135e2c.gif">Oleg 1</option>
-              <option value="https://static1.squarespace.com/static/56dcbf88555986f25c72cd9a/570958f7859fd0f69a265ffb/570959b6cf80a1b2994e2a04/1460433666675/Thermal-Drink-Small.gif?format=1500w">Glitch2</option>
-              <option value="http://data.whicdn.com/images/58708000/large.gif">3</option>
-              <option value="https://media.giphy.com/media/g2whtH7FXOjPq/giphy.gif">4</option>
-              <option value="http://4.bp.blogspot.com/-HcL0tsbWMlo/Ul9M73OoRCI/AAAAAAAAAH0/CQh2X9I6TvQ/s400/examplegif.gif">5</option>
-              <option value="https://media.giphy.com/media/iJVBPp5IIBEY0/giphy.gif">6</option>
-              <option value="https://s-media-cache-ak0.pinimg.com/originals/3b/ef/f6/3beff69bb8130980259adbfe82a34a80.gif">7</option>
-              <option value="https://68.media.tumblr.com/4084416ad980b506942e41133d430c0b/tumblr_ohhcpcI8Bq1vbuge9o1_500.gif">8</option>
-              <option value="http://static4.worldofwonder.net/wp-content/uploads/2013/07/tumblr_ml4pulwGcf1qd5eico1_250.gif">9</option>
-              <option value="https://media.giphy.com/media/9Nvlc0728SnGE/giphy.gif">10</option>
+                <option value="">none</option>
+                <option value="http://49.media.tumblr.com/79222e3f67bc37408e9a6825f5eb2188/tumblr_o4at51bG4M1s4fz4bo1_500.gif">Glitch 1</option>
+                <option value="http://alexturin.co/files/ezgif-2-3348135e2c.gif">Oleg 1</option>
+                <option value="https://static1.squarespace.com/static/56dcbf88555986f25c72cd9a/570958f7859fd0f69a265ffb/570959b6cf80a1b2994e2a04/1460433666675/Thermal-Drink-Small.gif?format=1500w">Glitch2</option>
+                <option value="http://data.whicdn.com/images/58708000/large.gif">3</option>
+                <option value="https://media.giphy.com/media/g2whtH7FXOjPq/giphy.gif">4</option>
+                <option value="http://4.bp.blogspot.com/-HcL0tsbWMlo/Ul9M73OoRCI/AAAAAAAAAH0/CQh2X9I6TvQ/s400/examplegif.gif">5</option>
+                <option value="https://media.giphy.com/media/iJVBPp5IIBEY0/giphy.gif">6</option>
+                <option value="https://s-media-cache-ak0.pinimg.com/originals/3b/ef/f6/3beff69bb8130980259adbfe82a34a80.gif">7</option>
+                <option value="https://68.media.tumblr.com/4084416ad980b506942e41133d430c0b/tumblr_ohhcpcI8Bq1vbuge9o1_500.gif">8</option>
+                <option value="http://static4.worldofwonder.net/wp-content/uploads/2013/07/tumblr_ml4pulwGcf1qd5eico1_250.gif">9</option>
+                <option value="https://media.giphy.com/media/9Nvlc0728SnGE/giphy.gif">10</option>
             </select>
-          </div>
+        </div>
 
-          <div class="row">
+        <div class="row">
             <label> Prompt </label>
             <input type="text" ng-model="options.popuptext" style="flex-grow: 1"/>
             <input type="checkbox" ng-model="options.popup"> <span style="color: white"> Visible </span>
             <button ng-click="updateOptions()" style="margin-left: 20px;"> Submit Pop-up </button>
-          </div>
+        </div>
 
-          <div class="row">
+        <div class="row">
             <label> Screen state</label>
             <select ng-model="options.wrapperAnimation" style="flex-grow: 1">
-              <option value="">none</option>
-              <option value="glitch">Glitch 1</option>
-              <option value="tvoff">TV Off</option>
-              <option value="tvon">TV On</option>
+                <option value="">none</option>
+                <option value="glitch">Glitch 1</option>
+                <option value="tvoff">TV Off</option>
+                <option value="tvon">TV On</option>
             </select>
             <button ng-click="updateOptions()" style="margin-left: 20px;"> Submit Animation </button>
-          </div>
+        </div>
 
-          <div class="row" style="height: auto; position: relative;">
+        <div class="row" style="height: auto; position: relative;">
             <label>Live CSS
-            <span> beetchat, general-wrapper, messages, message, p </span>
+                <span> beetchat, general-wrapper, messages, message, p </span>
             </label>
             <textarea ng-model="LiveCss" style="flex-grow: 1; height: 100px"/></textarea>
             <button ng-click="submitCss()" style="position: absolute; bottom: 10px; right: 10px;"> Submit css </button>
-          </div>
+        </div>
 
-          <div class="row" style="height: auto; justify-content: center; padding-top: 20px">
+        <div class="row" style="height: auto; justify-content: center; padding-top: 20px">
             <form ng-submit="sendMessage()" style="display: flex; flex-grow: 1">
-                  <input type="text" placeholder="Message" ng-model="message.text" style="flex-grow: 1; height: 40px;" ng-change="updateMessageText()"/>
-                  <input ng-model="message.textColor" type="color" style="margin-left: 20px;"/>
-                  <input ng-model="message.textSize" type="range">
+                <input type="text" ng-attr-placeholder="{{options.inputText}}" ng-model="message.text" style="flex-grow: 1; height: 40px;" ng-change="updateOptions()"/>
+                <input ng-model="message.textColor" type="color" style="margin-left: 20px;"/>
+                <input ng-model="message.textSize" type="range">
             </form>
-          </div>
-
-
+        </div>
 
     </div>
 </body>

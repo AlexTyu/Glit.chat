@@ -46,10 +46,9 @@ var OPTIONS = {
     textSize: 16,
     bgColor: "#000000",
     bgImage: "none",
-    wrapperAnimation: "none"
+    wrapperAnimation: "none",
+    inputText: ""
 };
-
-var TEXT_COLOR = "#f00";
 
 io.on('connection', function (socket) {
 
@@ -78,9 +77,9 @@ io.on('connection', function (socket) {
 
     socket.on('new message', function(message) {
         MESSAGES.push(message);
+        OPTIONS.inputText = "";
         emitMessages();
     });
-
 
     emitMessages();
     emitOptions();
