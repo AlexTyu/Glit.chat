@@ -1,6 +1,12 @@
 var app = angular.module("beetchat", []);
 var Socket = io();
 
+document.documentElement.addEventListener('touchstart', function (event) {
+  if (event.touches.length > 1) {
+    event.preventDefault();
+  }
+}, false);
+
 app.controller("main", function($scope) {
 
     $scope.message = {};
@@ -43,7 +49,14 @@ app.controller("main", function($scope) {
             popupTextColor: $scope.options.popupTextColor,
             inputText: $scope.message.text,
             LiveCss: $scope.options.LiveCss,
-            hideMessages: $scope.options.hideMessages
+            showMessages: $scope.options.showMessages,
+            blendMode: $scope.options.blendMode,
+            filter: $scope.options.filter,
+            filterValue: $scope.options.filterValue,
+            glitcher: $scope.options.glitcher,
+            glitcherX: $scope.options.glitcherX,
+            popupScale: $scope.options.popupScale,
+            transitionState: $scope.options.transitionState
         });
     }
 
@@ -57,5 +70,13 @@ app.controller("main", function($scope) {
         $scope.message.text = "";
         $scope.options.inputText = "";
     }
+
+    if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position){
+      $scope.$apply(function(){
+        $scope.position = position;
+      });
+    });
+  }
 
 });

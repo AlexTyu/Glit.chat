@@ -44,13 +44,19 @@ var OPTIONS = {
     textColor: "#f00",
     textSize: 16,
     bgColor: "#000000",
-    bgImage: "none",
+    bgImage: "/gifs/16.gif",
     wrapperAnimation: "none",
     inputText: "",
     LiveCss: "",
     popupBg: "",
     popupTextColor: "white",
-    hideMessages: false
+    hideMessages: false,
+    popup: true,
+    popuptext: 'How is your day?',
+    popupBg: 'black',
+    popupTextColor: 'red',
+    showMessages: false,
+    blendMode: 'lighten'
 };
 
 
