@@ -104,7 +104,7 @@ h2{
     margin: 0;
     font-weight: 300;
     text-align: center;
-    /*transition: 0.5s cubic-bezier(.42, 0, .58, 1);*/
+    transition: 0.5s cubic-bezier(.42, 0, .58, 1);
 }
 
 input[type="text"]{
@@ -115,9 +115,13 @@ input[type="text"]{
     color: white;
 }
 
+select{
+    font-size: 11px !important;
+}
+
 input[type="color"]{
-    height: 40px;
-    width: 40px;
+    height: 47px;
+    width: 29px;
     background: transparent;
     display: flex;
     justify-content: center;

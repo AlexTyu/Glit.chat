@@ -71,13 +71,18 @@ app.controller("main", function($scope) {
 
         if ( $scope.message.text == "555" ) {
             $scope.options.puzzle1 = true;
-            $scope.options.bgImage = '/gifs/17.gif';
+            $scope.options.bgImage = '/gifs/16.gif';
             $scope.options.popuptext = 'Access Granted';
+            $scope.options.popupTextColor = 'red'
 
         }
 
         if ( $scope.message.text == "999" ) {
             $scope.options.puzzle2 = true;
+            $scope.options.bgImage = '/gifs/6.gif';
+            $scope.options.popuptext = 'Kirkorov!';
+            $scope.options.popupTextColor = 'white',
+            $scope.options.popupScale = '30'
         }
 
         $scope.message.text = "";
@@ -85,8 +90,25 @@ app.controller("main", function($scope) {
     }
 
     $scope.reset = function() {
-        $scope.options = "";
-        $scope.messages = ""
+        $scope.options.textColor = "#f00",
+        $scope.options.textSize = 16,
+        $scope.options.bgColor = "#000000",
+        $scope.options.bgImage = "",
+        $scope.options.wrapperAnimation = "none",
+        $scope.options.inputText = "",
+        $scope.options.LiveCss = "",
+        $scope.options.popupBg = "",
+        $scope.options.popupTextColor = "white",
+        $scope.options.popup = true,
+        $scope.options.popuptext = 'Enter PIN',
+        $scope.options.popupBg = 'black',
+        $scope.options.popupTextColor = 'white',
+        $scope.options.showMessages = false,
+        $scope.options.blendMode = 'normal',
+        $scope.messages = "",
+        $scope.message.text = "",
+        $scope.messages = "",
+        updateOptions()
     }
 
     if (navigator.geolocation) {

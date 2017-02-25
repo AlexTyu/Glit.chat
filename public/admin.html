@@ -38,7 +38,7 @@
         <div class="row">
             <label style="align-self: baseline"> Background</label>
             <div class="bgs-row" style="flex-wrap: wrap;">
-                <input type="color" ng-model="options.bgColor" ng-change="updateOptions()" style="margin-right: 20px;" data-text="bg">
+                <input type="color" ng-model="options.bgColor" ng-change="updateOptions()" style="margin-right: 20px; margin-top: -5px;" data-text="bg">
                 <span class="bgoption" ng-click="options.bgImage = ''; updateOptions()" style="background-image: url('')"></span>
                 <span class="bgoption" ng-click="options.bgImage = '/gifs/1.gif'; updateOptions()" style="background-image: url('/gifs/1.gif')"></span>
                 <span class="bgoption" ng-click="options.bgImage = '/gifs/2.gif'; updateOptions()" style="background-image: url('/gifs/2.gif')"></span>
@@ -72,7 +72,7 @@
           <button ng-click="options.wrapperAnimation = 'tvoff'; updateOptions()" style="margin-right: 10px">OFF</button>
           <button ng-click="options.wrapperAnimation = 'tvon'; updateOptions()" style="margin-right: 10px">ON</button>
 
-          <label> States</label>
+          <label style="width: auto; margin-left: 40px;"> States</label>
           <!-- <input type="checkbox" ng-checked="options.transitionState = 'stretchState'"> -->
           <!-- <input type="checkbox" ng-checked="options.transitionState = 'stretchState'"/> -->
            <button ng-click="options.transitionState = 'glitchState'; updateOptions()" style="margin-right: 10px">Text Glitch</button>
@@ -83,7 +83,7 @@
         </div>
 
         <div class="row">
-            <label> Filter/Blend <input type="checkbox" ng-model="options.glitcher" style="margin-right: 20px;" ng-change="updateOptions()"></label>
+            <label> Filter/Blend <input type="checkbox" ng-model="options.glitcher" ng-change="updateOptions()" style="margin-left: 20px;"></label>
 
             <select ng-model="options.filter" ng-change="updateOptions()" style="margin-right: 15px;">
                 <option value="" selected>No Filter</option>
@@ -142,9 +142,9 @@
 
         <div class="row">
 
-          <label> Prompt <input type="checkbox" ng-model="options.popup" style="margin-right: 20px;" ng-change="updateOptions()"> </label>
-              <input type="text" placeholder="Text" ng-model="options.popuptext" style="flex-grow: 1; margin-right: 20px;" ng-change="updateOptions()"/>
-              <input type="color" ng-model="options.popupBg" style="margin-right: 20px;" ng-change="updateOptions()" data-text="bg">
+          <label> Prompt <input type="checkbox" ng-model="options.popup" ng-change="updateOptions()" style="margin-left: 20px;"> </label>
+              <input type="text" placeholder="Text" ng-model="options.popuptext" style="flex-grow: 1; margin-right: 4px;" ng-change="updateOptions()"/>
+              <input type="color" ng-model="options.popupBg" style="margin-right: -10px;" ng-change="updateOptions()" data-text="bg">
               <input type="color" ng-init="options.popupTextColor == 'white'" label="txt" ng-model="options.popupTextColor" style="margin-right: 20px;" ng-change="updateOptions()"  data-text="txt">
               <input ng-model="options.popupScale" step="0.01" type="range" min="3" max="30" ng-change="updateOptions()" style="margin-left: 10px;"/>
         </div>
@@ -152,9 +152,9 @@
 
         <div class="row" style="height: auto; justify-content: center; padding-top: 20px">
             <form ng-submit="sendMessage()" style="display: flex; flex-grow: 1">
-                <label> Chat <input type="checkbox" ng-model="options.showMessages" ng-change="updateOptions()" style="margin-right: 20px;"> </label>
+                <label> Chat <input type="checkbox" ng-model="options.showMessages" ng-change="updateOptions()" style="margin-left: 4px;"> </label>
                 <input type="text" class="admin-message" placeholder="Message" ng-model="message.text" style="flex-grow: 1; height: 40px; color: {{message.textColor}}; font-size:{{message.textSize}}px" ng-change="updateOptions()"/>
-                <input ng-model="message.textColor" type="color" value="red" style="margin-left: 20px;" data-text="txt"/>
+                <input ng-model="message.textColor" type="color" value="red" style="margin-left: 4px; margin-top: -4px;" data-text="txt"/>
                 <input ng-model="message.textSize" type="range">
             </form>
         </div>
@@ -174,7 +174,7 @@
                 </div>
             </div>
         </div>
-        <button style="float: right; margin-top: 70px" ng-click="reset()"> Start over </button>
+        <button style="float: right; margin-top: 70px" ng-click="reset(); updateOptions()"> Start over </button>
     </div>
 </body>
 </html>
