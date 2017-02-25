@@ -55,7 +55,7 @@ var OPTIONS = {
     popupBg: 'black',
     popupTextColor: 'white',
     showMessages: false,
-    blendMode: 'lighten'
+    blendMode: 'normal'
 };
 
 

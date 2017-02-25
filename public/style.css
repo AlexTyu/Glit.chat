@@ -11,6 +11,7 @@ body {
     margin: 0;
     display: flex;
     box-sizing: border-box;
+    overflow: hidden;
      -webkit-font-smoothing: antialiased !important;
 }
 html:before {
