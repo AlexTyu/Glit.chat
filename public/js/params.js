@@ -10,7 +10,8 @@ document.documentElement.addEventListener('touchstart', function (event) {
 app.controller("main", function($scope) {
 
     $scope.message = {};
-    $scope.message.textColor = "red"
+    $scope.message.textColor = "red";
+
 
     Socket.on('messages', function(data) {
         $scope.messages = data.messages;
@@ -67,6 +68,18 @@ app.controller("main", function($scope) {
             textColor: $scope.message.textColor,
             textSize: $scope.message.textSize
         });
+
+        if ( $scope.message.text == "555" ) {
+            $scope.options.puzzle1 = true;
+            $scope.options.bgImage = '/gifs/17.gif';
+            $scope.options.popuptext = 'Access Granted';
+
+        }
+
+        if ( $scope.message.text == "999" ) {
+            $scope.options.puzzle2 = true;
+        }
+
         $scope.message.text = "";
         $scope.options.inputText = "";
     }

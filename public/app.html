@@ -6,6 +6,14 @@
         {{options.LiveCss}}
     }
 
+    body.admin{
+            border: 4px solid red;
+    }
+
+    body.watch{
+            border: 4px solid red;
+    }
+
     .bg-glitcher{
         filter: {{options.filter}}({{options.filterValue}}px);
         filter: {{options.filter}}({{options.filterValue}}deg);
@@ -26,10 +34,13 @@
                 <span>></span>{{ message.text }}
             </p>
 
+
             <p ng-if="message.user == 1" style="color: white; font-size: {{message.textSize}}px">
                 {{ message.text }}
             </p>
         </div>
+    
+
         <form ng-submit="sendMessage()" style="display: flex; flex-grow: 1">
             <div class="row">
                 <input class="message" ng-attr-placeholder=">{{options.inputText}}" ng-model="message.text" style="flex-grow: 1"  ng-change="updateOptions()"/>

@@ -20,10 +20,13 @@
         <div class="statusbar"></div>
         <div ng-include="'app.html'"></div>
         <!--  app view -->
-        <div class="status">
-            <span class="client-status" style="background-color: red"></span>
+        <div class="client-status" style="background-color: red">
             <p class="label" style="color: white"> Offline </p>
             <!-- <p class="label" style="color: red"> {{position}} </p> -->
+        </div>
+        <div class="codes">
+        <p> Intro PIN: {{options.puzzle1}} <span ng-if="options.puzzle1 !== true"> Not solved (555)</span></p>
+        <p> Code2: {{options.puzzle2}} <span ng-if="options.puzzle2 !== true"> Not solved </span></p>
         </div>
     </div>
 
@@ -36,47 +39,48 @@
 
 
         <div class="row">
-            <label> Background</label>
+            <label style="align-self: baseline"> Background</label>
+            <div class="bgs-row" style="flex-wrap: wrap;">
+                <input type="color" ng-model="options.bgColor" ng-change="updateOptions()" style="margin-right: 20px;" data-text="bg">
+                <span class="bgoption" ng-click="options.bgImage = ''; updateOptions()" style="background-image: url('')"></span>
+                <span class="bgoption" ng-click="options.bgImage = '/gifs/1.gif'; updateOptions()" style="background-image: url('/gifs/1.gif')"></span>
+                <span class="bgoption" ng-click="options.bgImage = '/gifs/2.gif'; updateOptions()" style="background-image: url('/gifs/2.gif')"></span>
+                <span class="bgoption" ng-click="options.bgImage = '/gifs/3.gif'; updateOptions()" style="background-image: url('/gifs/3.gif')"></span>
+                <span class="bgoption" ng-click="options.bgImage = '/gifs/4.gif'; updateOptions()" style="background-image: url('/gifs/4.gif')"></span>
+                <span class="bgoption" ng-click="options.bgImage = '/gifs/5.gif'; updateOptions()" style="background-image: url('/gifs/5.gif')"></span>
+                <span class="bgoption" ng-click="options.bgImage = '/gifs/6.gif'; updateOptions()" style="background-image: url('/gifs/6.gif')"></span>
+                <span class="bgoption" ng-click="options.bgImage = '/gifs/7.gif'; updateOptions()" style="background-image: url('/gifs/7.gif')"></span>
+                <span class="bgoption" ng-click="options.bgImage = '/gifs/8.gif'; updateOptions()" style="background-image: url('/gifs/8.gif')"></span>
+                <span class="bgoption" ng-click="options.bgImage = '/gifs/9.gif'; updateOptions()" style="background-image: url('/gifs/9.gif')"></span>
+                <span class="bgoption" ng-click="options.bgImage = '/gifs/10.gif'; updateOptions()" style="background-image: url('/gifs/10.gif')"></span>
+                <span class="bgoption" ng-click="options.bgImage = '/gifs/11.gif'; updateOptions()" style="background-image: url('/gifs/11.gif')"></span>
+                <span class="bgoption" ng-click="options.bgImage = '/gifs/12.png'; updateOptions()" style="background-image: url('/gifs/12.png')"></span>
+                <span class="bgoption" ng-click="options.bgImage = '/gifs/13.gif'; updateOptions()" style="background-image: url('/gifs/13.gif')"></span>
+                <span class="bgoption" ng-click="options.bgImage = '/gifs/14.gif'; updateOptions()" style="background-image: url('/gifs/14.gif')"></span>
+                <span class="bgoption" ng-click="options.bgImage = '/gifs/15.gif'; updateOptions()" style="background-image: url('/gifs/15.gif')"></span>
+                <span class="bgoption" ng-click="options.bgImage = '/gifs/16.gif'; updateOptions()" style="background-image: url('/gifs/16.gif')"></span>
+                <span class="bgoption" ng-click="options.bgImage = '/gifs/17.gif'; updateOptions()" style="background-image: url('/gifs/17.gif')"></span>
+                <span class="bgoption" ng-click="options.bgImage = '/gifs/18.gif'; updateOptions()" style="background-image: url('/gifs/18.gif')"></span>
+                <span class="bgoption" ng-click="options.bgImage = '/gifs/19.gif'; updateOptions()" style="background-image: url('/gifs/19.gif')"></span>
+                <span class="bgoption" ng-click="options.bgImage = '/gifs/20.gif'; updateOptions()" style="background-image: url('/gifs/20.gif')"></span>
+                <input type="text" ng-model="options.bgImage" placeholder="Image URL" ng-change="updateOptions()" style="flex-grow: 1;">
+            </div>
 
-            <input type="color" ng-model="options.bgColor" ng-change="updateOptions()" style="margin-right: 20px;">
-            <span class="bgoption" ng-click="options.bgImage = ''; updateOptions()" style="background-image: url('')"></span>
-            <span class="bgoption" ng-click="options.bgImage = '/gifs/1.gif'; updateOptions()" style="background-image: url('/gifs/1.gif')"></span>
-            <span class="bgoption" ng-click="options.bgImage = '/gifs/2.gif'; updateOptions()" style="background-image: url('/gifs/2.gif')"></span>
-            <span class="bgoption" ng-click="options.bgImage = '/gifs/3.gif'; updateOptions()" style="background-image: url('/gifs/3.gif')"></span>
-            <span class="bgoption" ng-click="options.bgImage = '/gifs/4.gif'; updateOptions()" style="background-image: url('/gifs/4.gif')"></span>
-            <span class="bgoption" ng-click="options.bgImage = '/gifs/5.gif'; updateOptions()" style="background-image: url('/gifs/5.gif')"></span>
-            <span class="bgoption" ng-click="options.bgImage = '/gifs/6.gif'; updateOptions()" style="background-image: url('/gifs/6.gif')"></span>
-            <span class="bgoption" ng-click="options.bgImage = '/gifs/7.gif'; updateOptions()" style="background-image: url('/gifs/7.gif')"></span>
-            <span class="bgoption" ng-click="options.bgImage = '/gifs/8.gif'; updateOptions()" style="background-image: url('/gifs/8.gif')"></span>
-            <span class="bgoption" ng-click="options.bgImage = '/gifs/9.gif'; updateOptions()" style="background-image: url('/gifs/9.gif')"></span>
-            <span class="bgoption" ng-click="options.bgImage = '/gifs/10.gif'; updateOptions()" style="background-image: url('/gifs/10.gif')"></span>
-            <span class="bgoption" ng-click="options.bgImage = '/gifs/11.gif'; updateOptions()" style="background-image: url('/gifs/11.gif')"></span>
-            <span class="bgoption" ng-click="options.bgImage = '/gifs/12.png'; updateOptions()" style="background-image: url('/gifs/12.png')"></span>
-            <span class="bgoption" ng-click="options.bgImage = '/gifs/13.gif'; updateOptions()" style="background-image: url('/gifs/13.gif')"></span>
-            <span class="bgoption" ng-click="options.bgImage = '/gifs/14.gif'; updateOptions()" style="background-image: url('/gifs/14.gif')"></span>
-            <span class="bgoption" ng-click="options.bgImage = '/gifs/15.gif'; updateOptions()" style="background-image: url('/gifs/15.gif')"></span>
-            <span class="bgoption" ng-click="options.bgImage = '/gifs/16.gif'; updateOptions()" style="background-image: url('/gifs/16.gif')"></span>
-            <span class="bgoption" ng-click="options.bgImage = '/gifs/17.gif'; updateOptions()" style="background-image: url('/gifs/17.gif')"></span>
-            <span class="bgoption" ng-click="options.bgImage = '/gifs/18.gif'; updateOptions()" style="background-image: url('/gifs/18.gif')"></span>
-            <span class="bgoption" ng-click="options.bgImage = '/gifs/19.gif'; updateOptions()" style="background-image: url('/gifs/19.gif')"></span>
-            <span class="bgoption" ng-click="options.bgImage = '/gifs/20.gif'; updateOptions()" style="background-image: url('/gifs/20.gif')"></span>
 
-
-
-            <input type="text" ng-model="options.bgImage" placeholder="Image URL" ng-change="updateOptions()" style="flex-grow: 1;">
         </div>
 
         <div class="row">
-          <label> Glitch</label>
-          <button ng-click="options.wrapperAnimation = ''; options.transitionState = ''; updateOptions()" style="margin-right: 10px">Default</button>
-          <button ng-click="options.wrapperAnimation = 'glitch'; updateOptions()" style="margin-right: 10px">Glitch 1</button>
-
+          <label> Keyframes</label>
+          <button ng-click="options.wrapperAnimation = ''; options.transitionState = ''; updateOptions()" style="margin-right: 10px">Reset</button>
           <button ng-click="options.wrapperAnimation = 'tvoff'; updateOptions()" style="margin-right: 10px">OFF</button>
           <button ng-click="options.wrapperAnimation = 'tvon'; updateOptions()" style="margin-right: 10px">ON</button>
-          <button ng-click="options.wrapperAnimation = 'mirror'; updateOptions()" style="margin-right: 10px">Flip</button>
+
+          <label> States</label>
           <!-- <input type="checkbox" ng-checked="options.transitionState = 'stretchState'"> -->
           <!-- <input type="checkbox" ng-checked="options.transitionState = 'stretchState'"/> -->
+           <button ng-click="options.transitionState = 'glitchState'; updateOptions()" style="margin-right: 10px">Text Glitch</button>
           <button ng-click="options.transitionState = 'stretchState'; updateOptions()" style="margin-right: 10px">Stretch</button>
+          <button ng-click="options.transitionState = 'flipState'; updateOptions()" style="margin-right: 10px">Flip</button>
 
 
         </div>
@@ -84,7 +88,31 @@
         <div class="row">
             <label> Extra layer <input type="checkbox" ng-model="options.glitcher" style="margin-right: 20px;" ng-change="updateOptions()"></label>
 
-            <select ng-model="options.blendMode" ng-change="updateOptions()">
+            <select ng-model="options.filter" ng-change="updateOptions()" style="margin-right: 15px;">
+                <option value="" selected>No Filter</option>
+                <option value="blur">blur</option>
+                <option value="brightness">brightness</option>
+                <option value="contrast">contrast</option>
+                <option value="grayscale">grayscale</option>
+                <option value="hue-rotate">hue-rotate</option>
+                <option value="invert">invert</option>
+                <option value="opacity">opacity</option>
+                <option value="saturate">saturate</option>
+                <option value="sepia">sepia</option>
+            </select>
+
+            <span class="label" style="margin-right: 10px" ng-if="options.filter !== ''">Value </span>
+            <input ng-model="options.filterValue" type="range" min="0" max="10" ng-if="options.filter == 'blur'" style="flex-grow: 1" ng-change="updateOptions()"/>
+            <input ng-model="options.filterValue" type="range" step="0.1" min="0" max="10" ng-if="options.filter == 'brightness'" style="flex-grow: 1" ng-change="updateOptions()"/>
+            <input ng-model="options.filterValue" type="range" step="0.1" min="0" max="10" ng-if="options.filter == 'contrast'" style="flex-grow: 1" ng-change="updateOptions()"/>
+            <input ng-model="options.filterValue" type="range" min="0" max="100" ng-if="options.filter == 'grayscale'" style="flex-grow: 1" ng-change="updateOptions()"/>
+            <input ng-model="options.filterValue" type="range" min="0" max="180" ng-if="options.filter == 'hue-rotate'" style="flex-grow: 1" ng-change="updateOptions()"/>
+            <input ng-model="options.filterValue" type="range" min="0" max="100" ng-if="options.filter == 'invert'" style="flex-grow: 1" ng-change="updateOptions()"/>
+            <input ng-model="options.filterValue" type="range" min="0" max="100" ng-if="options.filter == 'opacity'" style="flex-grow: 1" ng-change="updateOptions()"/>
+            <input ng-model="options.filterValue" type="range" min="0" max="1000" ng-if="options.filter == 'saturate'" style="flex-grow: 1" ng-change="updateOptions()"/>
+            <input ng-model="options.filterValue" type="range" min="0" max="100" ng-if="options.filter == 'sepia'" style="flex-grow: 1" ng-change="updateOptions()"/>
+
+            <select ng-model="options.blendMode" style="margin-left: 20px;" ng-change="updateOptions()">
                 <option value="" disabled selected>Blend Mode</option>
                 <option value="normal">normal</option>
                 <option value="multiply">multiply</option>
@@ -104,31 +132,6 @@
                 <option value="luminosity">luminosity</option>
             </select>
 
-            <select ng-model="options.filter" ng-change="updateOptions()" style="margin-left: 10px; margin-right: 10px;">
-                <option value="" disabled selected>Filter</option>
-                <option value="">No filter</option>
-                <option value="blur">blur</option>
-                <option value="brightness">brightness</option>
-                <option value="contrast">contrast</option>
-                <option value="grayscale">grayscale</option>
-                <option value="hue-rotate">hue-rotate</option>
-                <option value="invert">invert</option>
-                <option value="opacity">opacity</option>
-                <option value="saturate">saturate</option>
-                <option value="sepia">sepia</option>
-            </select>
-
-            <span class="label" style="margin-right: 10px">Value </span>
-            <input ng-model="options.filterValue" type="range" min="0" max="10" ng-if="options.filter == 'blur'" style="flex-grow: 1" ng-change="updateOptions()"/>
-            <input ng-model="options.filterValue" type="range" step="0.1" min="0" max="10" ng-if="options.filter == 'brightness'" style="flex-grow: 1" ng-change="updateOptions()"/>
-            <input ng-model="options.filterValue" type="range" step="0.1" min="0" max="10" ng-if="options.filter == 'contrast'" style="flex-grow: 1" ng-change="updateOptions()"/>
-            <input ng-model="options.filterValue" type="range" min="0" max="100" ng-if="options.filter == 'grayscale'" style="flex-grow: 1" ng-change="updateOptions()"/>
-            <input ng-model="options.filterValue" type="range" min="0" max="180" ng-if="options.filter == 'hue-rotate'" style="flex-grow: 1" ng-change="updateOptions()"/>
-            <input ng-model="options.filterValue" type="range" min="0" max="100" ng-if="options.filter == 'invert'" style="flex-grow: 1" ng-change="updateOptions()"/>
-            <input ng-model="options.filterValue" type="range" min="0" max="100" ng-if="options.filter == 'opacity'" style="flex-grow: 1" ng-change="updateOptions()"/>
-            <input ng-model="options.filterValue" type="range" min="0" max="1000" ng-if="options.filter == 'saturate'" style="flex-grow: 1" ng-change="updateOptions()"/>
-            <input ng-model="options.filterValue" type="range" min="0" max="100" ng-if="options.filter == 'sepia'" style="flex-grow: 1" ng-change="updateOptions()"/>
-
             <span class="label" style="margin-right: 10px; margin-left: 20px">Shift </span>
             <input ng-model="options.glitcherX" type="range" min="0" max="100" ng-change="updateOptions()" style="margin-left: 10px;"/>
 
@@ -137,15 +140,15 @@
 
         <div class="row" style="height: auto; position: relative;">
           <label>Wrapper CSS </label>
-          <input class="csslive" type="text" placeholder="" ng-model="options.LiveCss" style="flex-grow: 1; margin-right: 20px;"/>
+          <input class="csslive" type="text" placeholder="" ng-model="options.LiveCss" style="flex-grow: 1;"/>
         </div>
 
         <div class="row">
 
           <label> Prompt <input type="checkbox" ng-model="options.popup" style="margin-right: 20px;" ng-change="updateOptions()"> </label>
               <input type="text" placeholder="Text" ng-model="options.popuptext" style="flex-grow: 1; margin-right: 20px;" ng-change="updateOptions()"/>
-              <input type="color" ng-model="options.popupBg" style="margin-right: 20px;" ng-change="updateOptions()">
-              <input type="color" ng-init="options.popupTextColor == 'white'" label="txt" ng-model="options.popupTextColor" style="margin-right: 20px;" ng-change="updateOptions()">
+              <input type="color" ng-model="options.popupBg" style="margin-right: 20px;" ng-change="updateOptions()" data-text="bg">
+              <input type="color" ng-init="options.popupTextColor == 'white'" label="txt" ng-model="options.popupTextColor" style="margin-right: 20px;" ng-change="updateOptions()"  data-text="txt">
               <input ng-model="options.popupScale" step="0.01" type="range" min="3" max="30" ng-change="updateOptions()" style="margin-left: 10px;"/>
         </div>
 
@@ -154,7 +157,7 @@
             <form ng-submit="sendMessage()" style="display: flex; flex-grow: 1">
                 <label> Chat <input type="checkbox" ng-model="options.showMessages" ng-change="updateOptions()" style="margin-right: 20px;"> </label>
                 <input type="text" class="admin-message" placeholder="Message" ng-model="message.text" style="flex-grow: 1; height: 40px; color: {{message.textColor}}; font-size:{{message.textSize}}px" ng-change="updateOptions()"/>
-                <input ng-model="message.textColor" type="color" value="red" style="margin-left: 20px;"/>
+                <input ng-model="message.textColor" type="color" value="red" style="margin-left: 20px;" data-text="txt"/>
                 <input ng-model="message.textSize" type="range">
             </form>
         </div>

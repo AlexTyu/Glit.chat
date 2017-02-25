@@ -10,6 +10,7 @@ body {
     height: 100%;
     margin: 0;
     display: flex;
+    box-sizing: border-box;
      -webkit-font-smoothing: antialiased !important;
 }
 html:before {
@@ -27,10 +28,7 @@ html:before {
     z-index: 0;
 }
 
-@keyframes mirror{
-  0% {transform: scaleX(-1)}
-  100% {transform: scaleX(-1)}
-  }
+
 
 @keyframes tvoff{
   0% {transform: scaleY(1) scaleX(1); background-color: transparent;}
@@ -44,7 +42,7 @@ html:before {
   100% {transform: scaleY(1) scaleX(1); background-color: transparent}
 }
 
-@keyframes glitch{
+/*@keyframes glitch{
   0% {text-shadow: -2px 0 red, 2px 0 blue; }
   20% {text-shadow: 0px 5px red, 7px 4 blue;}
   30% {text-shadow: -2px 0 red, 2px 0 blue; }
@@ -54,10 +52,18 @@ html:before {
   90% {text-shadow: -2px 0 red, 2px 0 blue; }
   95% {text-shadow: 0px 5px red, 7px 4 blue;}
   100% {text-shadow: -2px 0 red, 2px 0 blue;}
-}
+}*/
 
 #stretchState{
     transform: scaleX(3);
+}
+
+#glitchState{
+    text-shadow: -2px 0 red, 2px 0 blue;
+}
+
+#flipState{
+    transform: scaleX(-1);
 }
 
 .beetchat{
@@ -112,6 +118,20 @@ input[type="color"]{
     height: 40px;
     width: 40px;
     background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+input[type="color"]::before{
+    content: attr(data-text);
+    color: white;
+    position: absolute;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 input[type="text"]:focus{
@@ -122,8 +142,12 @@ input[type="text"]:focus{
 
 
 label{
-  font-weight: 400;
-  margin-right: 30px;
+    font-weight: 400;
+    margin-right: 30px;
+    align-self: baseline;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .log .messages{
@@ -267,7 +291,7 @@ input:focus +.blinker{
     height: 20px;
     top: 52px;
     left: 51px;
-    z-index: 100;
+    z-index: 10000;
     background-image: url("/statusbar.png");
     background-size: contain;
     background-position: center;
@@ -295,10 +319,11 @@ body.admin .beetchat, body.watch .beetchat{
     flex-shrink: 0;
     margin-left: 30px;
     margin-top: 20px;
+    z-index: 1000;
 }
 
 label{
-  width: 150px;
+  width: 140px;
   color: white;
   font-size: 13px;
   text-align: right;
@@ -311,12 +336,20 @@ label span{
 input{
   border: none;
   -webkit-apperance: none;
+  transition: 0.1s ease;
 }
+
+
 
 input:focus{
   outline: none;
+  background: rgba(255, 255, 255, 0.24);
   border-bottom: 1px solid aqua;
   border: none;
+}
+
+input:hover{
+  background: rgba(255, 255, 255, 0.24);
 }
 
 button{
@@ -328,11 +361,24 @@ button{
     cursor: pointer;
     outline: none;
     color: white;
+    transition: 0.1s ease;
 }
 
 button.active{
     background: red;
     color: white;
+}
+
+button:hover{
+    background: rgba(255, 255, 255, 0.24);
+    color: white;
+}
+
+.codes{
+    color: white;
+    padding: 0 80px;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 h4{
@@ -344,17 +390,30 @@ h4{
 .Control-panel{
   z-index: 1000;
   flex-grow: 1;
-  padding: 30px 50px 0px 30px;
+  padding: 70px 50px 0px 30px;
   position: relative;
 }
 
 .client-status{
-    width: 14px;
-    height: 14px;
-    border-radius: 100px;
+    position: absolute;
+    top: -137px;
+    left: -91px;
+    width: 400px;
+    height: 400px;
+    border-radius: 900px;
     display: block;
     margin-right: 10px;
+
 }
+
+.client-status .label{
+    font-weight: 600;
+    font-size: 13px;
+    position: absolute;
+    right: 73px;
+    top: 142px;
+}
+
 
 .label{
     color: white;
@@ -373,13 +432,20 @@ h4{
     color: white;
     background-size: auto 100%;
     background-position: center;
+    margin-bottom: 10px;
 }
 .row{
   flex-grow: 1;
   display: flex;
   align-items: center;
-  padding: 10px 0px;
+  padding: 16px 0px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.bgs-row{
+    display: flex;
+    flex-grow: 1;
+    padding: 0;
 }
 
 .status{
