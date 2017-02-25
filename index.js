@@ -51,16 +51,15 @@ var OPTIONS = {
     popupBg: "http://49.media.tumblr.com/79222e3f67bc37408e9a6825f5eb2188/tumblr_o4at51bG4M1s4fz4bo1_500.gif"
 };
 
-var CLIENT = "";
 
 io.on('connection', function (socket) {
 
 
-      function emitUser() {
-          socket.broadcast.emit('user joined', {
-            user: socket.user
-          });
-      }
+    //   function emitUser() {
+    //       socket.broadcast.emit('user joined', {
+    //         user: socket.user
+    //       });
+    //   }
 
     function emitMessages() {
         socket.emit('messages', {
@@ -80,10 +79,9 @@ io.on('connection', function (socket) {
         });
     }
 
-    socket.on('new user', function(message) {
-
-        emitUser();
-    });
+    // socket.on('new user', function(message) {
+    //     emitUser();
+    // });
 
     socket.on('options', function(data) {
         OPTIONS = data;
@@ -98,6 +96,6 @@ io.on('connection', function (socket) {
 
     emitMessages();
     emitOptions();
-    emitUser();
+    // emitUser();
 
 });

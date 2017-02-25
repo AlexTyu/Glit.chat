@@ -18,17 +18,16 @@ app.controller("main", function($scope) {
         $scope.$apply();
     })
 
-    Socket.on('user joined', function(data) {
-        console.log('user Joinded')
-    })
+    // Socket.on('user joined', function(data) {
+    //     console.log('user Joinded')
+    // })
+    //
+    // $scope.newUser = function() {
+    //     Socket.emit("new user", {
+    //         user: $scope.user
+    //     });
+    // }
 
-    $scope.newUser = function() {
-        Socket.emit("new user", {
-            user: $scope.user
-        });
-    }
-
-    newUser()
 
     $scope.updateOptions = function() {
         Socket.emit("options", {
