@@ -25,8 +25,8 @@
             <!-- <p class="label" style="color: red"> {{position}} </p> -->
         </div>
         <div class="codes">
-        <p> Intro PIN: {{options.puzzle1}} <span ng-if="options.puzzle1 !== true"> Not solved (555)</span></p>
-        <p> Code2: {{options.puzzle2}} <span ng-if="options.puzzle2 !== true"> Not solved </span></p>
+        <p> Intro PIN (555):<span ng-if="options.puzzle1 !== true"><i> Not solved </i></span> <span ng-if="options.puzzle1 == true" style="color: green">Solved!</span></p>
+        <p> Puzzle 2 (999):<span ng-if="options.puzzle2 !== true"><i> Not solved </i></span> <span ng-if="options.puzzle2 == true" style="color: green">Solved!</span></p>
         </div>
     </div>
 
@@ -83,7 +83,7 @@
         </div>
 
         <div class="row">
-            <label> Extra layer <input type="checkbox" ng-model="options.glitcher" style="margin-right: 20px;" ng-change="updateOptions()"></label>
+            <label> Filter/Blend <input type="checkbox" ng-model="options.glitcher" style="margin-right: 20px;" ng-change="updateOptions()"></label>
 
             <select ng-model="options.filter" ng-change="updateOptions()" style="margin-right: 15px;">
                 <option value="" selected>No Filter</option>
@@ -174,8 +174,7 @@
                 </div>
             </div>
         </div>
+        <button style="float: right; margin-top: 70px" ng-click="reset()"> Start over </button>
     </div>
-    <button> Reset data </button>
 </body>
-
 </html>

@@ -15,7 +15,7 @@ app.use(express.static(__dirname + '/public'));
 var MESSAGES = [
     {
         user: "0",
-        text: "[103.231.481.213]. Ping 424ms",
+        text: "[http://138.68.7.45]. Ping 424ms",
         textColor: "gray",
     },
     {

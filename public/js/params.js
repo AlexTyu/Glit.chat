@@ -84,6 +84,11 @@ app.controller("main", function($scope) {
         $scope.options.inputText = "";
     }
 
+    $scope.reset = function() {
+        $scope.options = "";
+        $scope.messages = ""
+    }
+
     if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position){
       $scope.$apply(function(){
