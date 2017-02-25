@@ -1,0 +1,51 @@
+<style>
+    html{
+        background-color: {{options.bgColor}}
+    }
+    .general-wrapper{
+        {{options.LiveCss}}
+    }
+
+    .bg-glitcher{
+        filter: {{options.filter}}({{options.filterValue}}px);
+        filter: {{options.filter}}({{options.filterValue}}deg);
+        filter: {{options.filter}}({{options.filterValue}}%);
+        filter: {{options.filter}}({{options.filterValue}});
+        transform: translateX({{options.glitcherX}}px) translateY(-{{options.glitcherX}}px);
+        mix-blend-mode: {{options.blendMode}};
+    }
+
+    h2{font-size: {{options.popupScale}}px}
+</style>
+<div ng-init="user = 1" class="beetchat">
+    <div class="general-wrapper" id="{{options.transitionState}}" style="color: {{options.textColor}}; font-size: {{options.textSize}}px; background-color: {{options.bgColor}}; background-image: url({{options.bgImage}}) ; animation-name: {{options.wrapperAnimation}}">
+        <div class="bg-glitcher" style="background-image: url({{options.bgImage}})" ng-if="options.glitcher == true"></div>
+        <div class="messages" id="messages" ng-if="options.showMessages == true">
+            <div class="message" ng-repeat="message in messages">
+            <p ng-if="message.user !== 1" style="color: {{ message.textColor }}; font-size: {{message.textSize}}px">
+                <span>></span>{{ message.text }}
+            </p>
+
+            <p ng-if="message.user == 1" style="color: white; font-size: {{message.textSize}}px">
+                {{ message.text }}
+            </p>
+        </div>
+        <form ng-submit="sendMessage()" style="display: flex; flex-grow: 1">
+            <div class="row">
+                <input class="message" ng-attr-placeholder=">{{options.inputText}}" ng-model="message.text" style="flex-grow: 1"  ng-change="updateOptions()"/>
+                <span class="blinker"><span>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="prompt-wrapper" ng-if="options.popup == true">
+  <div class="prompt" style="background-color: {{options.popupBg}}">
+    <h2 style="color: {{options.popupTextColor}}"> {{options.popuptext}} </h2>
+  </div>
+  <form ng-submit="sendMessage()" style="display: flex; flex-grow: 0;">
+      <div class="row">
+          <input class="message" ng-attr-placeholder=">{{options.inputText}}" ng-model="message.text"  ng-change="updateOptions()"/>
+          <span class="blinker"><span>
+      </div>
+  </form>
+</div>
