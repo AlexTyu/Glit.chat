@@ -4,6 +4,7 @@ var Socket = io();
 app.controller("main", function($scope) {
 
     $scope.message = {};
+    $scope.message.textColor = "red"
 
     Socket.on('messages', function(data) {
         $scope.messages = data.messages;
@@ -39,6 +40,7 @@ app.controller("main", function($scope) {
             popup: $scope.options.popup,
             popuptext: $scope.options.popuptext,
             popupBg: $scope.options.popupBg,
+            popupTextColor: $scope.options.popupTextColor,
             inputText: $scope.message.text,
             LiveCss: $scope.options.LiveCss,
             hideMessages: $scope.options.hideMessages

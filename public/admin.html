@@ -21,6 +21,8 @@
     <div class="Control-panel">
         <div class="column">
             <div class="row">
+                <label> Hide chat </label>
+                <input type="checkbox" ng-model="options.hideMessages" ng-change="updateOptions()" style="margin-right: 20px;">
                 <label> Default Text</label>
                 <input type="color" ng-change="updateOptions()" ng-model="options.textColor">
                 <input type="range" ng-change="updateOptions()"  ng-model="options.textSize" style="flex-grow: 1">
@@ -28,7 +30,7 @@
 
             <div class="row">
                 <label> Background</label>
-                <input type="color" ng-model="options.bgColor" ng-change="updateOptions()" style="margin-right: 20px;">
+                <input type="color" ng-model="options.bgColor" ng-change="updateOptions()" style="margin-right: 20px; background-color: {{options.bgColor}}">
                 <!-- <input ng-model="options.bgImage" ng-change="updateOptions()" style="flex-grow: 1;"> -->
                 <span class="bgoption" ng-click="options.bgImage = ''; updateOptions()" style="background-image: url('')"></span>
                 <span class="bgoption" ng-click="options.bgImage = '/gifs/1.gif'; updateOptions()" style="background-image: url('/gifs/1.gif')"></span>
@@ -60,10 +62,9 @@
             </div>
 
             <div class="row" style="height: auto; position: relative;">
-              <label>Live CSS
-              <span> beetchat, general-wrapper, messages, message, p </span>
+              <label>Wrapper CSS
               </label>
-              <textarea ng-model="options.LiveCss" style="flex-grow: 1; height: 100px"/></textarea>
+              <input type="text" ng-model="options.LiveCss" style="flex-grow: 1;"/></textarea>
               <button ng-click="options.LiveCss = ''; updateOptions()" style="position: absolute; bottom: 10px; right: 80px;"> Clear</button>
               <button ng-click="updateOptions()" style="position: absolute; bottom: 10px; right: 10px;"> Update </button>
             </div>
@@ -72,14 +73,11 @@
         <div class="column">
 
             <div class="row">
-              <label> Prompt </label>
-                  <input type="checkbox" ng-model="options.popup" style="margin-right: 20px;">
-                  <input type="text"  placeholder="Text" ng-model="options.popuptext" style="flex-grow: 1"/>
-            </div>
-
-            <div class="row">
-                <label> Settings </label>
-                <input type="checkbox" ng-model="options.hideMessages" ng-change="updateOptions()" style="margin-right: 20px;">
+              <label> Overlay Message </label>
+                  <input type="color" ng-model="options.popupBg" style="margin-right: 20px; background-color: {{options.popupBg}}" ng-change="updateOptions()">
+                  <input type="color" ng-init="options.popupTextColor == 'white'" ng-model="options.popupTextColor" style="margin-right: 20px; background-color: {{options.popupTextColor}}" ng-change="updateOptions()">
+                  <input type="checkbox" ng-model="options.popup" style="margin-right: 20px;" ng-change="updateOptions()">
+                  <input type="text" placeholder="Text" ng-model="options.popuptext" style="flex-grow: 1" ng-change="updateOptions()"/>
             </div>
 
         </div>
@@ -87,8 +85,8 @@
         <div class="row" style="height: auto; justify-content: center; padding-top: 20px">
             <form ng-submit="sendMessage()" style="display: flex; flex-grow: 1">
                 <label> Message </label>
-                <input type="text" class="admin-message" ng-attr-placeholder="{{options.inputText}}" ng-model="message.text" style="flex-grow: 1; height: 40px; color: {{message.textColor}}; font-size:{{message.textSize}}px " ng-change="updateOptions()"/>
-                <input ng-model="message.textColor" type="color" style="margin-left: 20px;"/>
+                <input type="text" class="admin-message" ng-attr-placeholder="{{options.inputText}}" ng-model="message.text" style="flex-grow: 1; height: 40px; color: {{message.textColor}}; font-size:{{message.textSize}}px" ng-change="updateOptions()"/>
+                <input ng-model="message.textColor" type="color" value="red" style="margin-left: 20px; background-color: {{message.textColor}}"/>
                 <input ng-model="message.textSize" type="range">
             </form>
         </div>

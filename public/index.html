@@ -28,7 +28,9 @@
 
 <body ng-app="beetchat" ng-controller="main">
     <style>
-        {{options.LiveCss}}
+        .general-wrapper{
+            {{options.LiveCss}}
+        }
     </style>
     <div ng-init="user = 1" class="beetchat">
         <div class="general-wrapper" style="color: {{options.textColor}}; font-size: {{options.textSize}}px; background-color: {{options.bgColor}}; background-image: url({{options.bgImage}}) ; animation-name: {{options.wrapperAnimation}}">
@@ -51,9 +53,9 @@
             </form>
         </div>
     </div>
-    <div class="prompt-wrapper" ng-if="options.popup == true" style="background-image: url({{options.popupBg}})">
-      <div class="prompt">
-        <h2> {{options.popuptext}} </h2>
+    <div class="prompt-wrapper" ng-if="options.popup == true">
+      <div class="prompt" style="background-color: {{options.popupBg}}">
+        <h2 style="background-color: {{options.popupTextColor}}"> {{options.popuptext}} </h2>
       </div>
     </div>
 </body>

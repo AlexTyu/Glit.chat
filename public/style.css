@@ -77,6 +77,19 @@ html:before {
   transition: 0.5s ease;
 }
 
+input[type="text"]{
+    height: 40px;
+    background: rgba(255, 255, 255, 0.11);
+    box-sizing: border-box;
+    padding-left: 10px;
+    color: white;
+}
+
+input[type="text"]:focus{
+    height: 40px;
+    background: rgba(255, 255, 255, 0.11);
+    border-bottom: 1px solid #a80505;
+}
 
 
 label{
@@ -110,9 +123,6 @@ label{
   width: 100%;
   top: 0;
   left: 0;
-  /*mix-blend-mode: hard-light;*/
-  /*background-image: url("https://static1.squarespace.com/static/56dcbf88555986f25c72cd9a/570958f7859fd0f69a265ffb/570959b6cf80a1b2994e2a04/1460433666675/Thermal-Drink-Small.gif?format=1500w");*/
-  background-image: url("http://49.media.tumblr.com/79222e3f67bc37408e9a6825f5eb2188/tumblr_o4at51bG4M1s4fz4bo1_500.gif");
   background-size: auto 100%;
   background-position: center;
 }
@@ -302,6 +312,7 @@ h4{
   height: 50px;
   display: flex;
   align-items: center;
+  padding: 10px 0px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
 

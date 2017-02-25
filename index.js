@@ -48,7 +48,8 @@ var OPTIONS = {
     wrapperAnimation: "none",
     inputText: "",
     LiveCss: "",
-    popupBg: "http://49.media.tumblr.com/79222e3f67bc37408e9a6825f5eb2188/tumblr_o4at51bG4M1s4fz4bo1_500.gif",
+    popupBg: "",
+    popupTextColor: "white",
     hideMessages: false
 };
 
