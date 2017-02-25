@@ -33,7 +33,7 @@
     <div ng-init="user = 1" class="beetchat">
         <div class="general-wrapper" style="color: {{options.textColor}}; font-size: {{options.textSize}}px; background-color: {{options.bgColor}}; background-image: url({{options.bgImage}}) ; animation-name: {{options.wrapperAnimation}}">
             <div class="statusbar"></div>
-            <div class="messages" id="messages">
+            <div class="messages" id="messages" ng-if="options.hideMessages == false">
                 <div class="message" ng-repeat="message in messages">
                 <p ng-if="message.user !== 1"style="color: {{ message.textColor }}; font-size: {{message.textSize}}px">
                     <span>></span>{{ message.text }}

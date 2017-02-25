@@ -176,6 +176,15 @@ input.message{
     font-size: 16px;
 }
 
+.admin-message{
+    background: rgba(255, 255, 255, 0.11);
+    border-bottom: 1px solid #a80505;
+}
+
+.admin-message:focus{
+    background: transparent;
+}
+
 input:focus +.blinker{
     display: none;
 }
@@ -278,6 +287,16 @@ h4{
   position: relative;
 }
 
+.bgoption{
+    width: 30px;
+    height: 100%;
+    cursor: pointer;
+    margin-right: 4px;
+    background: black;
+    color: white;
+    background-size: auto 100%;
+    background-position: center;
+}
 .row{
   flex-grow: 1;
   height: 50px;

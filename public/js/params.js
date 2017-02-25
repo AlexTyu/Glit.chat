@@ -40,7 +40,8 @@ app.controller("main", function($scope) {
             popuptext: $scope.options.popuptext,
             popupBg: $scope.options.popupBg,
             inputText: $scope.message.text,
-            LiveCss: $scope.options.LiveCss
+            LiveCss: $scope.options.LiveCss,
+            hideMessages: $scope.options.hideMessages
         });
     }
 
@@ -52,6 +53,7 @@ app.controller("main", function($scope) {
             textSize: $scope.message.textSize
         });
         $scope.message.text = "";
+        $scope.options.inputText = "";
     }
 
 });
