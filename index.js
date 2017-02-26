@@ -30,6 +30,7 @@ var OPTIONS = {
     textSize: 16,
     bgColor: "#000000",
     bgImage: "",
+    bgImage: "",
     wrapperAnimation: "none",
     inputText: "",
     LiveCss: "",
@@ -41,10 +42,11 @@ var OPTIONS = {
     popupTextColor: 'white',
     showMessages: false,
     blendMode: 'normal',
-    userInputType: 'password',
+    userInputTextType: 'password',
     userInputModel: 'message',
     userInputAction : '',
-    glitcherLayover: false
+    glitcherLayover: false,
+    puzzle1: false
 };
 
 var oleg = false;

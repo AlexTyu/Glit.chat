@@ -7,6 +7,8 @@ document.documentElement.addEventListener('touchstart', function (event) {
   }
 }, false);
 
+
+
 app.controller("main", function($scope, $timeout) {
 
 
@@ -49,6 +51,7 @@ app.controller("main", function($scope, $timeout) {
 
 
 
+
     $scope.updateOptions = function() {
         Socket.emit("options", {
             textColor: $scope.options.textColor,
@@ -74,7 +77,8 @@ app.controller("main", function($scope, $timeout) {
             userInputTextType: $scope.options.userInputTextType,
             userInputLabel: $scope.options.userInputLabel,
             userInputModel: $scope.options.userInputModel,
-            userInputAction: $scope.options.userInputAction
+            userInputAction: $scope.options.userInputAction,
+            puzzle1: $scope.options.puzzle1
         });
     }
 
@@ -86,8 +90,13 @@ app.controller("main", function($scope, $timeout) {
             textSize: $scope.message.textSize
         });
 
-        if ( $scope.message.text == "555" ) {
-            $scope.pinSolved();
+        if  ($scope.options.puzzle1 == false ) {
+          if ( $scope.message.text == "555" ) {
+              $scope.pinSolved();
+          }
+          else{
+              $scope.accessDenied();
+          }
         }
 
         $scope.message.text = "";
@@ -106,8 +115,9 @@ app.controller("main", function($scope, $timeout) {
       $scope.options.puzzle1 = true;
       $scope.options.bgImage = '/gifs/21.gif';
       $scope.options.popuptext = 'User Identified';
-      $scope.options.popupTextColor = 'red';
+      $scope.options.popupTextColor = '#f00';
       $scope.options.userInputType = '';
+      document.activeElement.blur();
       $scope.updateOptions();
 
       $timeout( function(){
@@ -120,15 +130,64 @@ app.controller("main", function($scope, $timeout) {
       }, 4000 );
     }
 
+    $scope.accessDenied = function() {
+      $scope.options.bgImage = '/gifs/22.gif';
+      $scope.options.popuptext = '[Access Denied]';
+      $scope.options.popupTextColor = '#f00';
+      $scope.options.userInputType = '';
+      $scope.options.popup = true;
+      document.activeElement.blur();
+      $scope.updateOptions();
+
+      $timeout( function(){$scope.options.popup = false;}, 50 );
+      $timeout( function(){$scope.options.popup = true;},  100 );
+      $timeout( function(){$scope.options.popup = false;}, 150 );
+      $timeout( function(){$scope.options.popup = true;},  200 );
+      $timeout( function(){$scope.options.popup = false;}, 250 );
+      $timeout( function(){$scope.options.popup = true;},  300 );
+      $timeout( function(){$scope.options.popup = false;}, 350 );
+      $timeout( function(){$scope.options.popup = true;},  400 );
+      $timeout( function(){$scope.options.popup = false;}, 450 );
+      $timeout( function(){$scope.options.popup = true;},  500 );
+      $timeout( function(){$scope.options.popup = false;}, 550 );
+      $timeout( function(){$scope.options.popup = true;},  600 );
+      $timeout( function(){$scope.options.popup = false;}, 650 );
+      $timeout( function(){$scope.options.popup = true;},  700 );
+      $timeout( function(){$scope.options.popup = false;}, 750 );
+      $timeout( function(){$scope.options.popup = true;},  800 );
+      $timeout( function(){$scope.options.popup = false;}, 850 );
+      $timeout( function(){$scope.options.popup = true;},  900 );
+      $timeout( function(){$scope.options.popup = false;}, 950 );
+      $timeout( function(){$scope.options.popup = true;},  1000 );
+
+      $timeout( function(){
+        $scope.options.bgImage = '/gifs/0.gif';
+        $scope.options.popupTextColor = '#fff';
+        $scope.options.popuptext = '[Enter PIN]';
+        $scope.options.popupBg = 'rgba(0,0,0,0)';
+        $scope.options.showMessages = false;
+        $scope.updateOptions();
+      }, 1100 );
+    }
+
     $scope.actionExplosion = function() {
       $scope.options.bgImage = '/gifs/19.gif';
       $scope.options.popuptext = 'BOOM';
+      $scope.options.popupBg = 'orange';
       $scope.options.popup = true;
-      $scope.options.popupTextColor = 'red';
+      $scope.options.popupTextColor = 'white';
       $scope.options.userInputType = '';
       $scope.options.glitcherLayover = true;
       $scope.options.wrapperAnimation = 'none'
       $scope.updateOptions();
+      $timeout( function(){
+        $scope.options.wrapperAnimation = '';
+        $scope.options.bgImage = '';
+        $scope.options.showMessages = true;
+        $scope.options.popup = false;
+        $scope.options.transitionState = 'none';
+        $scope.updateOptions();
+      }, 2000 );
     }
 
     $scope.windowsError = function(){
@@ -150,14 +209,15 @@ app.controller("main", function($scope, $timeout) {
         $scope.options.wrapperAnimation = '';
         $scope.updateOptions();
         $scope.options.transitionState = 'none';
+        $scope.options.showMessages = 'true';
+        $scope.options.bgImage = "";
     }
 
 
     $scope.reset = function() {
         $scope.options.textColor = "#f00",
         $scope.options.textSize = 16,
-        $scope.options.bgColor = "#000000",
-        $scope.options.bgImage = "",
+        $scope.options.bgImage = "/gifs/0.gif",
         $scope.options.wrapperAnimation = "none",
         $scope.options.inputText = "",
         $scope.options.LiveCss = "",

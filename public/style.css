@@ -29,6 +29,7 @@ body {
   height: 100%;
   z-index: 10000;
   box-sizing: border-box;
+  pointer-events: none;
 }
 
 
@@ -114,7 +115,6 @@ h2{
     margin: 0;
     font-weight: 300;
     text-align: center;
-    transition: 0.5s cubic-bezier(.42, 0, .58, 1);
 }
 
 input[type="text"]{
