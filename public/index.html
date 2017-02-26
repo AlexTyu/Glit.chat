@@ -16,11 +16,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="/bower_components/angularjs/angular.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var Socket = io({ query: "user=1" });
+    </script>
     <script src="js/params.js"></script>
 
 </head>
 
-<body ng-app="beetchat" ng-controller="main" ng-include="'app.html'" ng-init=" user = 1">
+<body ng-app="beetchat" ng-controller="main" ng-include="'app.html'" ng-init="user = 1">
 </body>
 
 </html>

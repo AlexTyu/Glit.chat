@@ -58,15 +58,24 @@ var OPTIONS = {
     blendMode: 'normal'
 };
 
+var oleg = false;
 
 io.on('connection', function (socket) {
 
+    var handshakeData = socket.request;
+    if( handshakeData._query['user'] == 1 ) {
+      oleg = true;
+      emitOleg(oleg);
+    }
 
-    //   function emitUser() {
-    //       socket.broadcast.emit('user joined', {
-    //         user: socket.user
-    //       });
-    //   }
+    function emitOleg(status) {
+      socket.emit('oleg', {
+          oleg: status
+      });
+      socket.broadcast.emit('oleg', {
+          oleg: status
+      });
+    }
 
     function emitMessages() {
         socket.emit('messages', {
@@ -100,6 +109,14 @@ io.on('connection', function (socket) {
         OPTIONS.inputText = "";
         emitMessages();
     });
+
+    socket.on('disconnect', function () {
+        if( handshakeData._query['user'] == 1 ) {
+            oleg = false;
+        }
+        emitOleg(oleg);
+    });
+
 
     emitMessages();
     emitOptions();

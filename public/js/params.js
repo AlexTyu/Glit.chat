@@ -1,5 +1,5 @@
 var app = angular.module("beetchat", []);
-var Socket = io();
+
 
 document.documentElement.addEventListener('touchstart', function (event) {
   if (event.touches.length > 1) {
@@ -8,6 +8,8 @@ document.documentElement.addEventListener('touchstart', function (event) {
 }, false);
 
 app.controller("main", function($scope) {
+
+    console.log($scope.user);
 
     $scope.message = {};
     $scope.message.textColor = "red";
@@ -23,6 +25,11 @@ app.controller("main", function($scope) {
 
     Socket.on('options', function(data) {
         $scope.options = data.options;
+        $scope.$apply();
+    })
+
+    Socket.on('oleg', function(data) {
+        $scope.oleg = data.oleg;
         $scope.$apply();
     })
 
