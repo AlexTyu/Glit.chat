@@ -2,17 +2,33 @@
 <html class="admin watch" lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Glitch: Admin</title>
-    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:200,300,400,500,600,700,900" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="̆̀͏̱̝̫r̷͉̺̯̯̤̯̙͊ͧ́̚ḋ̙̤̬̱͙̱͆̔̓ͬ̋i̜̯̟̾̈́̆̉ͤḁ̄͐̓ͫ̂̀͞n͓̥͔̞̺͔͂͗͝ͅT́͆͒ͭ̑͏͕͡h̛̝̳͚̏̈́e̡ͣ͒̾̿͊́ͪ̚͞">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+  <link rel="apple-touch-startup-image" href="launch.png">
+  <link href="Default-667h@2x.png" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+  <link href="Default-667h@2x.png"  media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+  <link href="Default-667h@2x.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)" rel="apple-touch-startup-image">
+  <link href="Default-667h@2x.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)" rel="apple-touch-startup-image">
+  <link href="Default-667h@2x.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+  <link href="Default-667h@2x.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+  <title>"̆̀͏̱̝̫r̷͉̺̯̯̤̯̙͊ͧ́̚ḋ̙̤̬̱͙̱͆̔̓ͬ̋i̜̯̟̾̈́̆̉ͤḁ̄͐̓ͫ̂̀͞n͓̥͔̞̺͔͂͗͝ͅT́͆͒ͭ̑͏͕͡h̛̝̳͚̏̈́e̡ͣ͒̾̿͊́ͪ̚͞"</title>
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:200,300,400,500,600,700,900" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="/bower_components/angularjs/angular.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var Socket = io({ query: "user=0" });
     </script>
     <script src="js/params.js"></script>
+    <script src="js/addtohomescreen.js"></script>
+    <link rel="stylesheet" type="text/css" href="js/addtohomescreen.css">
+    <script>
+      addToHomescreen({});
+      removeSession()
+    </script>
 
 </head>
 
