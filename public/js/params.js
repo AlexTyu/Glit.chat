@@ -117,7 +117,7 @@ app.controller("main", function($scope, $timeout) {
         $scope.options.showMessages = true;
         $scope.options.wrapperAnimation = '';
         $scope.updateOptions();
-      }, 2000 );
+      }, 4000 );
     }
 
     $scope.actionExplosion = function() {

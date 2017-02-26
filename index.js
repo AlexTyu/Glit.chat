@@ -22,21 +22,6 @@ var MESSAGES = [
         user: "0",
         text: "Connection established",
         textColor: "gray",
-    },
-    {
-        user: "0",
-        text: "Hello?",
-        textColor: "red",
-    },
-    {
-        user: "0",
-        text: "Are you there?",
-        textColor: "red"
-    },
-    {
-        user: "0",
-        text: "Why do you think you can trust them?",
-        textColor: "red"
     }
 ];
 
