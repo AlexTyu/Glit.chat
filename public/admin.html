@@ -75,6 +75,8 @@
                 <span class="bgoption" ng-click="options.bgImage = '/gifs/26.gif'; updateOptions()" style="background-image: url('/gifs/26.gif')"></span>
                 <span class="bgoption" ng-click="options.bgImage = '/gifs/27.gif'; updateOptions()" style="background-image: url('/gifs/27.gif')"></span>
                 <span class="bgoption" ng-click="options.bgImage = '/gifs/28.gif'; updateOptions()" style="background-image: url('/gifs/28.gif')"></span>
+                <span class="bgoption" ng-click="options.bgImage = '/gifs/29.gif'; updateOptions()" style="background-image: url('/gifs/29.gif')"></span>
+
 
 
 
@@ -186,19 +188,18 @@
               <option value="time"> Time </option>
           </select>
 
-          <input type="text" ng-model="options.userInputLabel" placeholder="label" ng-change="updateOptions()">
+          <!-- <select ng-model="options.userInputActionType" ng-change="updateOptions()" style="margin-right: 20px;">
+              <option value="" selected> None </option>
+              <option value="button"> Button </option>
+              <option value="range"> Range </option>
+              <option value="checkbox"> Checkbox </option>
+          </select> -->
+          <!-- <input type="text" ng-model="options.userInputLabel" placeholder="label" ng-change="updateOptions()"> -->
 
-          <select ng-if="options.userInputType == 'button'" ng-model="options.userInputAction" ng-change="updateOptions()" style="margin-right: 20px;">
+          <!-- <select ng-if="options.userInputType == 'button'" ng-model="options.userInputActionType" ng-change="updateOptions()" style="margin-right: 20px;">
               <option value="explosion" selected> Explosion </option>
               <option value="reset()" selected> Reset </option>
               <option value="" selected> Events </option>
-              <option value="text" selected> Parameter </option>
-          </select>
-
-          <!-- <select ng-model="options.userInputModel" ng-change="updateOptions()" style="margin-right: 20px;">
-              <option value="message.text" selected> Chat </option>
-              <option value="" selected> Events </option>
-              <option value="text" selected> Parameter </option>
           </select> -->
 
 

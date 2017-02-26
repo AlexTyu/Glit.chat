@@ -49,7 +49,9 @@ var OPTIONS = {
     puzzle1: false,
     filter: 'brightness',
     glitcher: false,
-    filterValue: '1'
+    filterValue: '1',
+    glitcherX: '0',
+    userInputActionType: 'none'
 };
 
 var oleg = false;

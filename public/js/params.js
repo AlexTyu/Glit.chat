@@ -114,8 +114,9 @@ app.controller("main", function($scope, $timeout) {
     $scope.pinSolved = function() {
       $scope.options.puzzle1 = true;
       $scope.options.bgImage = '/gifs/21.gif';
-      $scope.options.popuptext = 'User Identified';
-      $scope.options.popupTextColor = '#f00';
+      $scope.options.popuptext = '[Access Confirmed]]';
+      $scope.options.popupTextColor = '#fff';
+      $scope.options.popupBg = '#0f0'
       $scope.options.userInputTextType = '';
       document.activeElement.blur();
       $scope.updateOptions();
@@ -126,6 +127,7 @@ app.controller("main", function($scope, $timeout) {
         $scope.options.popup = false;
         $scope.options.showMessages = true;
         $scope.options.wrapperAnimation = '';
+        $scope.options.glitcher = true;
         $scope.updateOptions();
       }, 4000 );
     }
@@ -136,6 +138,7 @@ app.controller("main", function($scope, $timeout) {
       $scope.options.popupTextColor = '#f00';
       $scope.options.userInputType = '';
       $scope.options.popup = true;
+      $scope.options.glitcher = true;
       document.activeElement.blur();
       $scope.updateOptions();
 
@@ -166,6 +169,7 @@ app.controller("main", function($scope, $timeout) {
         $scope.options.popuptext = '[Enter PIN]';
         $scope.options.popupBg = 'rgba(0,0,0,0)';
         $scope.options.showMessages = false;
+        $scope.options.glitcher = false;
         $scope.updateOptions();
       }, 1100 );
     }
@@ -239,6 +243,7 @@ app.controller("main", function($scope, $timeout) {
         $scope.options.userInputAction = '',
         $scope.options.glitcherLayover = false,
         $scope.options.puzzle1 = false,
+        $scope.options.userInputActionType = 'None',
         $scope.messages = "",
         $scope.message.text = "",
         $scope.messages = "",
