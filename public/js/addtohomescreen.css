@@ -1,0 +1,185 @@
+.ath-viewport * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.ath-viewport {
+	position: relative;
+	z-index: 2147483641;
+	pointer-events: none;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-text-size-adjust: none;
+	-moz-text-size-adjust: none;
+	-ms-text-size-adjust: none;
+	-o-text-size-adjust: none;
+	text-size-adjust: none;
+}
+
+.ath-modal {
+	pointer-events: auto !important;
+}
+
+.ath-viewport, .ath-modal, .ath-mandatory{
+	background: black;
+}
+
+.ath-container {
+	pointer-events: auto !important;
+	position: absolute;
+	font-size: 15px;
+	line-height: 1.5em;
+	text-align: center;
+}
+
+.ath-container{
+	color: white;
+	width: 320px;
+	height: 540px;
+	background: url("../addto.png");
+	background-position: center;
+	background-size: 200px;
+	background-repeat: no-repeat;
+}
+
+.ath-container small {
+	font-size: 0.8em;
+	line-height: 1.3em;
+	display: block;
+	margin-top: 0.5em;
+}
+
+.ath-ios.ath-phone {
+	bottom: 1.8em;
+	left: 8%;
+}
+
+.ath-ios6.ath-tablet {
+	left: 5em;
+	top: 1.8em;
+}
+
+.ath-ios7.ath-tablet {
+	left: 0.7em;
+	top: 1.8em;
+}
+
+.ath-ios8.ath-tablet {
+	right: 0.4em;
+	top: 1.8em;
+}
+
+
+/* close icon */
+.ath-container:before {
+	display: none;
+}
+
+.ath-container.ath-icon:before {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	float: none;
+}
+
+.ath-mandatory .ath-container:before {
+	display: none;
+}
+
+
+
+/* applied only if the application icon is shown */
+.ath-container.ath-icon {
+
+}
+
+.ath-action-icon {
+	display: inline-block;
+	vertical-align: middle;
+	background-position: 50%;
+	background-repeat: no-repeat;
+	text-indent: -9999em;
+	overflow: hidden;
+}
+
+.ath-container p {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	z-index: 2147483642;
+	font-size: 1.1em;
+	font-family: 'Source Code Pro', monospace;
+	color: red;
+}
+
+/*//ARROW HERE*/
+.ath-ios.ath-phone:after {
+	content: '';
+	background: #eee;
+	position: absolute;
+	width: 2em;
+	height: 2em;
+	bottom: -0.9em;
+	left: 50%;
+	margin-left: -1em;
+	background: url("../arrow.png");
+	background-size: 15px;
+	background-position: center;
+	background-repeat: no-repeat;
+	-webkit-transform: scaleX(0.9) rotate(90deg);
+	transform: scaleX(0.9) rotate(90deg);
+	display: none;
+}
+
+
+.ath-application-icon {
+	position: relative;
+	padding: 0;
+	border: 0;
+	margin: 0 auto 0.2em auto;
+	height: 6em;
+	width: 6em;
+	z-index: 2147483642;
+}
+
+.ath-container.ath-ios .ath-application-icon {
+	border-radius: 1em;
+}
+
+@media only screen and (orientation: landscape) {
+	.ath-container.ath-phone {
+		width: 24em;
+	}
+
+	.ath-android.ath-phone {
+		margin-left: -12em;
+	}
+
+	.ath-ios.ath-phone {
+		margin-left: -12em;
+	}
+
+	.ath-ios6:after {
+		left: 39%;
+	}
+
+	.ath-ios8.ath-phone {
+		left: auto;
+		bottom: auto;
+		right: 0.4em;
+		top: 1.8em;
+	}
+
+	.ath-ios8.ath-phone:after {
+		bottom: auto;
+		top: -0.9em;
+		left: 68%;
+		z-index: 2147483641;
+		box-shadow: none;
+	}
+}

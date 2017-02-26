@@ -104,8 +104,8 @@ app.controller("main", function($scope, $timeout) {
 
     $scope.pinSolved = function() {
       $scope.options.puzzle1 = true;
-      $scope.options.bgImage = '/gifs/16.gif';
-      $scope.options.popuptext = 'Access Granted';
+      $scope.options.bgImage = '/gifs/21.gif';
+      $scope.options.popuptext = 'User Identified';
       $scope.options.popupTextColor = 'red';
       $scope.options.userInputType = '';
       $scope.updateOptions();
@@ -149,7 +149,7 @@ app.controller("main", function($scope, $timeout) {
     $scope.resetKeyframes = function() {
         $scope.options.wrapperAnimation = '';
         $scope.updateOptions();
-        $scope.options.transitionState = 'none';    
+        $scope.options.transitionState = 'none';
     }
 
 
