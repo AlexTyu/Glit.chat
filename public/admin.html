@@ -100,6 +100,8 @@
            <button ng-click="options.transitionState = 'glitchState'; updateOptions()" style="margin-right: 10px">Text Glitch</button>
           <button ng-click="options.transitionState = 'stretchState'; updateOptions()" style="margin-right: 10px">Stretch</button>
           <button ng-click="options.transitionState = 'flipState'; updateOptions()" style="margin-right: 10px">Flip</button>
+          <button ng-click="options.transitionState = 'scaleState'; updateOptions()" style="margin-right: 10px">Scale</button>
+
 
 
         </div>
@@ -119,7 +121,7 @@
                 <option value="saturate">saturate</option>
                 <option value="sepia">sepia</option>
             </select>
-
+            {{options.filterValue}}
             <span class="label" style="margin-right: 10px" ng-if="options.filter !== ''">Value </span>
             <input ng-model="options.filterValue" type="range" min="0" max="10" ng-if="options.filter == 'blur'" style="flex-grow: 1" ng-change="updateOptions()"/>
             <input ng-model="options.filterValue" type="range" step="0.1" min="0" max="10" ng-if="options.filter == 'brightness'" style="flex-grow: 1" ng-change="updateOptions()"/>
@@ -164,7 +166,7 @@
 
         <div class="row">
 
-          <label> Prompt <input type="checkbox" ng-model="options.popup" ng-change="updateOptions()" style="margin-left: 20px;"> </label>
+          <label> Prompt <input type="checkbox" ng-model="options.popup" ng-change="updateOptions();" style="margin-left: 20px;"> </label>
               <input type="text" placeholder="Text" ng-model="options.popuptext" style="flex-grow: 1; margin-right: 4px;" ng-change="updateOptions()"/>
               <input type="color" ng-model="options.popupBg" style="margin-right: -10px;" ng-change="updateOptions()" data-text="bg">
               <input type="color" ng-init="options.popupTextColor == 'white'" label="txt" ng-model="options.popupTextColor" style="margin-right: 20px;" ng-change="updateOptions()"  data-text="txt">

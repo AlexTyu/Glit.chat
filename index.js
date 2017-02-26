@@ -41,12 +41,15 @@ var OPTIONS = {
     popupBg: 'black',
     popupTextColor: 'white',
     showMessages: false,
-    blendMode: 'normal',
+    blendMode: 'difference',
     userInputTextType: 'password',
     userInputModel: 'message',
     userInputAction : '',
     glitcherLayover: false,
-    puzzle1: false
+    puzzle1: false,
+    filter: 'brightness',
+    glitcher: false,
+    filterValue: '1'
 };
 
 var oleg = false;

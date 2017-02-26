@@ -91,7 +91,7 @@ app.controller("main", function($scope, $timeout) {
         });
 
         if  ($scope.options.puzzle1 == false ) {
-          if ( $scope.message.text == "555" ) {
+          if ( $scope.message.text == "РJEK3-2LNBP-IIOD" ) {
               $scope.pinSolved();
           }
           else{
@@ -116,13 +116,13 @@ app.controller("main", function($scope, $timeout) {
       $scope.options.bgImage = '/gifs/21.gif';
       $scope.options.popuptext = 'User Identified';
       $scope.options.popupTextColor = '#f00';
-      $scope.options.userInputType = '';
+      $scope.options.userInputTextType = '';
       document.activeElement.blur();
       $scope.updateOptions();
 
       $timeout( function(){
         $scope.options.wrapperAnimation = 'tvon';
-        $scope.options.bgImage = '';
+        $scope.options.bgImage = '/gifs/6.gif';
         $scope.options.popup = false;
         $scope.options.showMessages = true;
         $scope.options.wrapperAnimation = '';
@@ -224,11 +224,21 @@ app.controller("main", function($scope, $timeout) {
         $scope.options.popupBg = "",
         $scope.options.popupTextColor = "white",
         $scope.options.popup = true,
-        $scope.options.popuptext = 'Enter PIN',
-        $scope.options.popupBg = 'black',
+        $scope.options.popuptext = '[Enter PIN]',
         $scope.options.popupTextColor = 'white',
         $scope.options.showMessages = false,
         $scope.options.blendMode = 'normal',
+        $scope.options.wrapperAnimation = "none",
+        $scope.options.inputText = "",
+        $scope.options.LiveCss = "",
+        $scope.options.popupBg = "",
+        $scope.options.popupTextColor = 'white',
+        $scope.options.showMessages = false,
+        $scope.options.userInputTextType = 'password',
+        $scope.options.userInputModel = 'message',
+        $scope.options.userInputAction = '',
+        $scope.options.glitcherLayover = false,
+        $scope.options.puzzle1 = false,
         $scope.messages = "",
         $scope.message.text = "",
         $scope.messages = "",
