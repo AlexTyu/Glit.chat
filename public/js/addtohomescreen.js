@@ -51,7 +51,7 @@ for ( var lang in ath.intl ) {
 
 // default options
 ath.defaults = {
-	appID: 'Gltdfgfchfd',		// local storage name (no need to change)
+	appID: 'Gltdffghsgfchfd',		// local storage name (no need to change)
 	fontSize: 15,				// base font size, used to properly resize the popup based on viewport scale factor
 	debug: false,				// override browser checks
 	modal: true,				// prevent further actions until the message is closed
