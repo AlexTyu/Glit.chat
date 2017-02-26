@@ -57,7 +57,8 @@ app.controller("main", function($scope) {
             glitcher: $scope.options.glitcher,
             glitcherX: $scope.options.glitcherX,
             popupScale: $scope.options.popupScale,
-            transitionState: $scope.options.transitionState
+            transitionState: $scope.options.transitionState,
+            userInput: $scope.options.userInput
         });
     }
 

@@ -149,6 +149,18 @@
               <input ng-model="options.popupScale" step="0.01" type="range" min="3" max="30" ng-change="updateOptions()" style="margin-left: 10px;"/>
         </div>
 
+        <div class="row">
+          <label> Client Input <input type="checkbox" ng-model="options.userInput" ng-change="updateOptions()" style="margin-left: 20px;"> </label>
+          <select ng-model="options.userInputType">
+              <option value="button"> Button </option>
+              <option value="range"> Range </option>
+          </select>
+          <select ng-model="options.userInputParameter">
+              <option value="button"> Button </option>
+              <option value="range"> Range </option>
+          </select>
+        </div>
+
 
         <div class="row" style="height: auto; justify-content: center; padding-top: 20px">
             <form ng-submit="sendMessage()" style="display: flex; flex-grow: 1">
