@@ -6,14 +6,6 @@
         {{options.LiveCss}}
     }
 
-    body.admin{
-            border: 4px solid red;
-    }
-
-    body.watch{
-            border: 4px solid red;
-    }
-
     .bg-glitcher{
         filter: {{options.filter}}({{options.filterValue}}px);
         filter: {{options.filter}}({{options.filterValue}}deg);
@@ -23,11 +15,11 @@
         mix-blend-mode: {{options.blendMode}};
     }
 
-    h2{font-size: {{options.popupScale}}px}
+    /*h2{font-size: {{options.popupScale}}px}*/
 </style>
 <div ng-init="user = 1" class="beetchat">
-    <div class="general-wrapper" id="{{options.transitionState}}" style="color: {{options.textColor}}; font-size: {{options.textSize}}px; background-color: {{options.bgColor}}; background-image: url({{options.bgImage}}) ; animation-name: {{options.wrapperAnimation}}">
-        <div class="bg-glitcher" style="background-image: url({{options.bgImage}})" ng-if="options.glitcher == true"></div>
+    <div class="general-wrapper" id="{{options.transitionState}}" style="color: {{options.textColor}}; font-size: {{options.textSize}}px; background-color: {{options.bgColor}};  animation-name: {{options.wrapperAnimation}}; background-image: url({{options.bgImage}})">
+        <div class="bg-glitcher" style="background-image: url({{options.bgImage}})" ng-if="options.glitcher == true" ng-class="{'layover' : options.glitcherLayover = true}"></div>
         <div class="messages" id="messages" ng-if="options.showMessages == true">
             <div class="message" ng-repeat="message in messages">
             <p ng-if="message.user !== 1" style="color: {{ message.textColor }}; font-size: {{message.textSize}}px">
@@ -39,11 +31,15 @@
                 {{ message.text }}
             </p>
         </div>
-    
+
 
         <form ng-submit="sendMessage()" style="display: flex; flex-grow: 1">
             <div class="row">
-                <input class="message" ng-attr-placeholder=">{{options.inputText}}" ng-model="message.text" style="flex-grow: 1"  ng-change="updateOptions()"/>
+                <input type="{{options.userInputTextType}}" class="message" ng-attr-placeholder=">{{options.inputText}}" ng-model="message.text" style="flex-grow: 1"  ng-change="updateOptions()"/>
+                <!-- <input type="submit" ng-if="options.userInputType == 'button' && options.userInputAction == 'explosion'" ng-click="actionExplosion()" style="flex-grow: 1"/> -->
+                <!-- <input type="range" ng-if="options.userInputType == 'range' && options.userInputAction == 'stretch'" ng-model="options.stretchSlider" style="flex-grow: 1"/> -->
+                <!-- <label ng-if="options.userInputType == 'checkbox'">{{options.userInputLabel}}</label> -->
+                <div class="submit" ng-click="sendMessage()" style="color: white;"></div>
                 <span class="blinker"><span>
             </div>
         </form>
@@ -55,7 +51,8 @@
   </div>
   <form ng-submit="sendMessage()" style="display: flex; flex-grow: 0;">
       <div class="row">
-          <input class="message" ng-attr-placeholder=">{{options.inputText}}" ng-model="message.text"  ng-change="updateOptions()"/>
+          <input type="{{options.userInputTextType}}" class="message" ng-attr-placeholder=">{{options.inputText}}" ng-model="message.text" ng-change="updateOptions()"/>
+          <div class="submit" ng-click="sendMessage()" style="color: white;"></div>
           <span class="blinker"><span>
       </div>
   </form>

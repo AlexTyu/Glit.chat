@@ -16,7 +16,7 @@
 
 </head>
 
-<body class="admin" ng-app="beetchat" ng-controller="main" >
+<body class="admin" ng-app="beetchat" ng-controller="main" style="border: 4px solid {{statusColor}};">
 
     <div class="side">
         <!--  app view -->
@@ -24,15 +24,16 @@
         <div ng-include="'app.html'"></div>
         <!--  app view -->
         <div ng-if="!oleg" class="client-status" style="background-color: red">
-            <p class="label" style="color: white"> Offline </p>
+            <p class="label" style="color: white"> Oleg Offline </p>
             <!-- <p class="label" style="color: red"> {{position}} </p> -->
         </div>
-        <div ng-if="oleg" class="client-status" style="background-color: green">
-            <p class="label" style="color: white"> Online </p>
+        <div ng-if="oleg" class="client-status" style="background-color: {{statusColor}}">
+            <p class="label" style="color: white"> Oleg Online </p>
+
         </div>
         <div class="codes">
-        <p> Intro PIN (555):<span ng-if="options.puzzle1 !== true"><i> Not solved </i></span> <span ng-if="options.puzzle1 == true" style="color: green">Solved!</span></p>
-        <p> Puzzle 2 (999):<span ng-if="options.puzzle2 !== true"><i> Not solved </i></span> <span ng-if="options.puzzle2 == true" style="color: green">Solved!</span></p>
+        <p> PIN:<span ng-if="options.puzzle1 !== true"><i> Not solved </i></span> <span ng-if="options.puzzle1 == true" style="color: green">Solved!</span></p>
+        <p> Puzzle 1:<span ng-if="options.puzzle2 !== true"><i> Not solved </i></span> <span ng-if="options.puzzle2 == true" style="color: green">Solved!</span></p>
         </div>
     </div>
 
@@ -71,10 +72,14 @@
         </div>
 
         <div class="row">
-          <label> Keyframes</label>
-          <button ng-click="options.wrapperAnimation = ''; options.transitionState = ''; updateOptions()" style="margin-right: 10px">Reset</button>
+          <label> Chat glitch</label>
+          <button ng-click="options.transitionState = ''; options.glitcherLayover = false; resetKeyframes()" style="margin-right: 10px">reset</button>
           <button ng-click="options.wrapperAnimation = 'tvoff'; updateOptions()" style="margin-right: 10px">OFF</button>
-          <button ng-click="options.wrapperAnimation = 'tvon'; updateOptions()" style="margin-right: 10px">ON</button>
+          <button ng-click="options.wrapperAnimation = 'tvon'; updateOptions(); resetKeyframes()" style="margin-right: 10px">ON</button>
+          <button ng-click="windowsError(); updateOptions();" style="margin-right: 10px">Windows</button>
+          <button ng-click="actionExplosion(); updateOptions();" style="margin-right: 10px">Explosion</button>
+
+
 
           <label style="width: auto; margin-left: 40px;"> States</label>
           <!-- <input type="checkbox" ng-checked="options.transitionState = 'stretchState'"> -->
@@ -154,15 +159,34 @@
         </div>
 
         <div class="row">
-          <label> Client Input <input type="checkbox" ng-model="options.userInput" ng-change="updateOptions()" style="margin-left: 20px;"> </label>
-          <select ng-model="options.userInputType">
-              <option value="button"> Button </option>
-              <option value="range"> Range </option>
+          <label> Client Input</label>
+
+          <select ng-model="options.userInputTextType" ng-change="updateOptions()" style="margin-right: 20px;">
+              <option value="" selected> Text </option>
+              <option value="number"> Number </option>
+              <option value="date"> Date </option>
+              <option value="color"> Color </option>
+              <option value="month"> Month </option>
+              <option value="password"> Password </option>
+              <option value="time"> Time </option>
           </select>
-          <select ng-model="options.userInputParameter">
-              <option value="button"> Button </option>
-              <option value="range"> Range </option>
+
+          <input type="text" ng-model="options.userInputLabel" placeholder="label" ng-change="updateOptions()">
+
+          <select ng-if="options.userInputType == 'button'" ng-model="options.userInputAction" ng-change="updateOptions()" style="margin-right: 20px;">
+              <option value="explosion" selected> Explosion </option>
+              <option value="reset()" selected> Reset </option>
+              <option value="" selected> Events </option>
+              <option value="text" selected> Parameter </option>
           </select>
+
+          <!-- <select ng-model="options.userInputModel" ng-change="updateOptions()" style="margin-right: 20px;">
+              <option value="message.text" selected> Chat </option>
+              <option value="" selected> Events </option>
+              <option value="text" selected> Parameter </option>
+          </select> -->
+
+
         </div>
 
 
@@ -190,7 +214,15 @@
                 </div>
             </div>
         </div>
-        <button style="float: right; margin-top: 70px" ng-click="reset(); updateOptions()"> Start over </button>
+
+        <div class="row">
+          <label> Puzzles </label>
+          <input type="checkbox" ng-model="options.Puzzle1" ng-checked="Q111"> Q: Magenta</label>
+          <input type="checkbox" value="Q2"> Q: Magenta</label>
+          <input type="checkbox" value="Q3"> Q: Magenta</label>
+          {{options.activePuzzle}}
+        </div>
+        <button style=" position: fixed; bottom: 10px; right: 10px;" ng-click="reset(); updateOptions()"> Start over </button>
     </div>
 </body>
 </html>

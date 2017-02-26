@@ -55,7 +55,11 @@ var OPTIONS = {
     popupBg: 'black',
     popupTextColor: 'white',
     showMessages: false,
-    blendMode: 'normal'
+    blendMode: 'normal',
+    userInputType: 'password',
+    userInputModel: 'message',
+    userInputAction : '',
+    glitcherLayover: false
 };
 
 var oleg = false;
@@ -66,6 +70,9 @@ io.on('connection', function (socket) {
     if( handshakeData._query['user'] == 1 ) {
       oleg = true;
       emitOleg(oleg);
+    }
+    else {
+      statusColor = 'red'
     }
 
     function emitOleg(status) {

@@ -7,13 +7,12 @@ document.documentElement.addEventListener('touchstart', function (event) {
   }
 }, false);
 
-app.controller("main", function($scope) {
+app.controller("main", function($scope, $timeout) {
 
-    console.log($scope.user);
 
     $scope.message = {};
     $scope.message.textColor = "red";
-
+    $scope.statusColor = 'red';
 
     Socket.on('messages', function(data) {
         $scope.messages = data.messages;
@@ -30,18 +29,24 @@ app.controller("main", function($scope) {
 
     Socket.on('oleg', function(data) {
         $scope.oleg = data.oleg;
+        if ($scope.oleg == true ) {
+          $scope.statusColor = 'green';
+        }
+        else {
+          $scope.statusColor = 'red';
+        }
         $scope.$apply();
     })
 
-    // Socket.on('user joined', function(data) {
-    //     console.log('user Joinded')
-    // })
-    //
-    // $scope.newUser = function() {
-    //     Socket.emit("new user", {
-    //         user: $scope.user
-    //     });
+    // $scope.updateStatus = function() {
+    //     if ($scope.oleg == true ) {
+    //       $scope.statusColor = 'green';
+    //     }
+    //     else {
+    //       $scope.statusColor = 'red';
+    //     }
     // }
+
 
 
     $scope.updateOptions = function() {
@@ -65,7 +70,11 @@ app.controller("main", function($scope) {
             glitcherX: $scope.options.glitcherX,
             popupScale: $scope.options.popupScale,
             transitionState: $scope.options.transitionState,
-            userInput: $scope.options.userInput
+            userInputType: $scope.options.userInputType,
+            userInputTextType: $scope.options.userInputTextType,
+            userInputLabel: $scope.options.userInputLabel,
+            userInputModel: $scope.options.userInputModel,
+            userInputAction: $scope.options.userInputAction
         });
     }
 
@@ -78,12 +87,11 @@ app.controller("main", function($scope) {
         });
 
         if ( $scope.message.text == "555" ) {
-            $scope.options.puzzle1 = true;
-            $scope.options.bgImage = '/gifs/16.gif';
-            $scope.options.popuptext = 'Access Granted';
-            $scope.options.popupTextColor = 'red'
-
+            $scope.pinSolved();
         }
+
+        $scope.message.text = "";
+        $scope.options.inputText = "";
 
         if ( $scope.message.text == "999" ) {
             $scope.options.puzzle2 = true;
@@ -92,10 +100,58 @@ app.controller("main", function($scope) {
             $scope.options.popupTextColor = 'white',
             $scope.options.popupScale = '30'
         }
-
-        $scope.message.text = "";
-        $scope.options.inputText = "";
     }
+
+    $scope.pinSolved = function() {
+      $scope.options.puzzle1 = true;
+      $scope.options.bgImage = '/gifs/16.gif';
+      $scope.options.popuptext = 'Access Granted';
+      $scope.options.popupTextColor = 'red';
+      $scope.options.userInputType = '';
+      $scope.updateOptions();
+
+      $timeout( function(){
+        $scope.options.wrapperAnimation = 'tvon';
+        $scope.options.bgImage = '';
+        $scope.options.popup = false;
+        $scope.options.showMessages = true;
+        $scope.options.wrapperAnimation = '';
+        $scope.updateOptions();
+      }, 2000 );
+    }
+
+    $scope.actionExplosion = function() {
+      $scope.options.bgImage = '/gifs/19.gif';
+      $scope.options.popuptext = 'BOOM';
+      $scope.options.popup = true;
+      $scope.options.popupTextColor = 'red';
+      $scope.options.userInputType = '';
+      $scope.options.glitcherLayover = true;
+      $scope.options.wrapperAnimation = 'none'
+      $scope.updateOptions();
+    }
+
+    $scope.windowsError = function(){
+      $scope.options.wrapperAnimation = 'tvoff';
+      $scope.options.bgImage = '/gifs/13.gif';
+      $scope.options.popup = false;
+      $timeout( function(){
+        $scope.options.wrapperAnimation = '';
+        $scope.options.bgImage = '/gifs/13.gif';
+        $scope.options.showMessages = false;
+        $scope.options.transitionState = 'none';
+        $scope.updateOptions();
+      }, 2000 );
+    }
+
+
+
+    $scope.resetKeyframes = function() {
+        $scope.options.wrapperAnimation = '';
+        $scope.updateOptions();
+        $scope.options.transitionState = 'none';    
+    }
+
 
     $scope.reset = function() {
         $scope.options.textColor = "#f00",
@@ -116,15 +172,15 @@ app.controller("main", function($scope) {
         $scope.messages = "",
         $scope.message.text = "",
         $scope.messages = "",
-        updateOptions()
+        $scope.updateOptions()
     }
-
-    if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position){
-      $scope.$apply(function(){
-        $scope.position = position;
-      });
-    });
-  }
+  //
+  //   if (navigator.geolocation) {
+  //   navigator.geolocation.getCurrentPosition(function(position){
+  //     $scope.$apply(function(){
+  //       $scope.position = position;
+  //     });
+  //   });
+  // }
 
 });

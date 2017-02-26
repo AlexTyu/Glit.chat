@@ -2,9 +2,12 @@ html{
     -webkit-text-size-adjust: none;
     overflow: hidden;
     height: 100%;
+    background-color: black;
+    background: black;
 }
 body {
     transition: all 0.5s ease;
+    background-color: black;
     font-family: 'Source Code Pro', monospace;
     font-weight: 300;
     height: 100%;
@@ -30,16 +33,20 @@ html:before {
 }
 
 
+@keyframes none{
+  0% {transform: scaleY(0) scaleX(0);}
+  100% {transform: scaleY(0.002) scaleX(0); background-color: white; background-image: none;}
+}
 
 @keyframes tvoff{
   0% {transform: scaleY(1) scaleX(1); background-color: transparent;}
-  60% {transform: scaleY(0.002) scaleX(1); background-color: white}
+  60% {transform: scaleY(0.002) scaleX(1); background-color: white; background-image: none;}
   100% {transform: scaleY(0.002) scaleX(0); background-color: white; background-image: none;}
 }
 
 @keyframes tvon{
   0% {transform: scaleY(0.002) scaleX(0); background-color: white; background-image: none;}
-  60% {transform: scaleY(0.002) scaleX(1); background-color: white}
+  60% {transform: scaleY(0.002) scaleX(1); background-color: white; background-image: none;}
   100% {transform: scaleY(1) scaleX(1); background-color: transparent}
 }
 
@@ -56,11 +63,11 @@ html:before {
 }*/
 
 #stretchState{
-    transform: scaleX(3);
+    transform: scaleX(1) scaleY(3) translateY(200px);
 }
 
 #glitchState{
-    text-shadow: -2px 0 red, 2px 0 blue;
+    text-shadow: 10px 6px rgba(218, 0, 255, 0.46), 0px 3px #0095ff;
 }
 
 #flipState{
@@ -100,6 +107,10 @@ html:before {
   background-position: center;
 }
 
+.bg-glitcher.layover{
+  z-index: 10;
+}
+
 h2{
     margin: 0;
     font-weight: 300;
@@ -115,9 +126,48 @@ input[type="text"]{
     color: white;
 }
 
+.submit{
+  background-image: url("send.svg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+}
+
 select{
     font-size: 11px !important;
 }
+
+input.message[type="submit"]{
+    height: 47px !important;
+    width: 29px !important;
+    background: red !important;
+    color: white !important;
+    -webkit-appearance: none;
+    display: block;
+    border-radius: 9px;
+    font-weight: 600;
+}
+
+input.message[type="submit"] + .submit{display: none;}
+input.message[type="submit"] + .blinker{display: none;}
+
+input.message[type="button"]{
+    height: 47px !important;
+    width: 29px !important;
+    background: red !important;
+    color: white !important;
+    -webkit-appearance: none;
+    display: block;
+    border-radius: 9px;
+    font-weight: 600;
+}
+
+input.message[type="button"] + .submit{display: none;}
+input.message[type="button"] + .blinker{display: none;}
+
+
 
 input[type="color"]{
     height: 47px;
@@ -139,7 +189,7 @@ input[type="color"]::before{
     align-items: center;
 }
 
-input[type="text"]:focus{
+body.admin input[type="text"]:focus{
     height: 40px;
     background: rgba(255, 255, 255, 0.11);
     border-bottom: 1px solid #a80505;
@@ -241,7 +291,7 @@ input.message{
     border-radius: 0;
     box-sizing: border-box;
     background: transparent !important;
-    width: 100%;
+    width: 280px;
     display: block;
     height: 40px;
     color: #fff;
