@@ -9,6 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="/bower_components/angularjs/angular.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var Socket = io({ query: "user=0" });
+    </script>
     <script src="js/params.js"></script>
 
 </head>
@@ -20,9 +23,12 @@
         <div class="statusbar"></div>
         <div ng-include="'app.html'"></div>
         <!--  app view -->
-        <div class="client-status" style="background-color: red">
+        <div ng-if="!oleg" class="client-status" style="background-color: red">
             <p class="label" style="color: white"> Offline </p>
             <!-- <p class="label" style="color: red"> {{position}} </p> -->
+        </div>
+        <div ng-if="oleg" class="client-status" style="background-color: green">
+            <p class="label" style="color: white"> Online </p>
         </div>
         <div class="codes">
         <p> Intro PIN (555):<span ng-if="options.puzzle1 !== true"><i> Not solved </i></span> <span ng-if="options.puzzle1 == true" style="color: green">Solved!</span></p>
@@ -32,8 +38,6 @@
 
 
     <div class="Control-panel">
-
-
 
         <div class="row">
             <label style="align-self: baseline"> Background</label>
