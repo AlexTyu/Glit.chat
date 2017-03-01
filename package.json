@@ -1,11 +1,11 @@
 {
-  "name": "socket.io-chat",
-  "version": "0.0.0",
-  "description": "A simple chat client using socket.io",
+  "name": "Glit.chat",
+  "version": "0.2.0",
+  "description": "Client-admin chat",
   "main": "index.js",
-  "author": "Grant Timmerman",
+  "author": "Alexander Turin",
   "private": true,
-  "license": "BSD",
+  "license": "Apache License 2.0",
   "dependencies": {
     "bower": "^1.7.9",
     "express": "4.13.4",
