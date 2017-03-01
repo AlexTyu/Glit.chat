@@ -1,15 +1,24 @@
 
 # glit.chat
 
-Cryptographic/Big-brother/Glitch-style user-admin chat, built as part of the real-life quest organized for our friend as a birthday gift.
+Cryptographic/Big-brother/Glitch-style user-admin chat, built as part of the real-life quest organized for our friend as a birthday gift. 
 
-## Features
-• Admin has full controll of Chat UI appearance, all changes broadcasted to the client in real-time.
+## Admin Features
+• Admin has full controll over Chat UI, ALL changes are broadcasted to the client in real-time.
 
 • Immediate client connection status notification 
 
+• Control over user's input type (text, password, date, month, time)
 
-• Background gif can be changed using prefiled GIF's or can be 
+• 24 Background gifs or Enter Image URL to change Background
+
+• Scripted Animations and css-effects (Tv-Off, Tv-On, Windows blue screen of death, glitches etc)
+
+• Live CSS change input
+
+• Extra layer that duplicates current BG image, for glitches using Blending modes, -Webkit-filters and transformations
+
+• Prompt message. Changable font size and background.
 
 
 ## Technologies
@@ -34,9 +43,16 @@ Initial pass – РJEK3-2LNBP-IIOD
 Watcher(sees admin console, but has no control)
 `http://localhost:3000/watch.html`
 
+## Live demo
+
+http://glit.chat – User
+http://glit.chat/admin.html – admin
+http://glit.chat/watch.html – Watcher(sees admin console, but has no control)
+
 
 ## To-do
-– Support of multiple users.
-– Global UI controls for every user.
-– Control UI for mobile. 
 
+• Support of multiple users.
+• More glitches and animation
+• Control UI for mobile. 
+• Global UI controls for every user.
