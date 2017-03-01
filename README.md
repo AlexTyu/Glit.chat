@@ -5,7 +5,10 @@ Cryptographic/Big-brother/Glitch-style user-admin chat, built as part of the rea
 
 ## Features
 • Admin has full controll of Chat UI appearance, all changes broadcasted to the client in real-time.
+
 • Immediate client connection status notification 
+
+
 • Background gif can be changed using prefiled GIF's or can be 
 
 
