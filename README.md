@@ -24,10 +24,10 @@ Cryptographic/Big-brother/Glitch-style user-admin chat, built as part of the rea
 
 
 ## Technologies
-Node.js
-Express
-Angular.js
-Socket.io
+- Node.js
+- Express
+- Angular.js
+- Socket.io
 
 ## To launch locally
 ```
