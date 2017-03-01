@@ -3,6 +3,8 @@
 
 Cryptographic/Big-brother/Glitch-style user-admin chat, built as part of the real-life quest organized for our friend as a birthday gift. 
 
+![alt tag](https://s3-us-west-2.amazonaws.com/s.cdpn.io/298209/IMG_1064.jpeg)
+
 ## Admin Features
 • Admin has full controll over Chat UI, ALL changes are broadcasted to the client in real-time.
 
