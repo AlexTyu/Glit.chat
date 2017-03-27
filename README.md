@@ -1,7 +1,9 @@
 
 # glit.chat
 
-Cryptographic/Big-brother/Glitch-style user-admin chat, built as part of the real-life quest organized for our friend as a birthday gift. 
+User-admin chat, designed to glitch. Built overnight as part of the real-life quest organized for our friend to scare shit out of him at his birthday.
+
+Admin has full control on chat's UI. All changes transmitted to user thru socket connection. 
 
 ![alt tag](https://s3-us-west-2.amazonaws.com/s.cdpn.io/298209/IMG_1064.jpeg)
 
