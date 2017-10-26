@@ -7,6 +7,14 @@ Admin has full control on chat's UI. All changes transmitted to user thru socket
 
 ![alt tag](https://s3-us-west-2.amazonaws.com/s.cdpn.io/298209/IMG_1064.jpeg)
 
+## Demo
+
+http://glit.chat – User
+PIN:  РJEK3-2LNBP-IIOD
+
+http://glit.chat/admin.html – admin
+http://glit.chat/watch.html – Watcher(sees admin console, but has no control)
+
 ## Admin Features
 • Admin has full controll over Chat UI, ALL changes are broadcasted to the client in real-time.
 
@@ -41,18 +49,11 @@ Admin panel
 `http://localhost:3000/admin.html`
 
 Client
-`http://localhost:3000/admin.html`
-Initial pass – РJEK3-2LNBP-IIOD
+`http://localhost:3000/`
+PIN:  РJEK3-2LNBP-IIOD
 
 Watcher(sees admin console, but has no control)
 `http://localhost:3000/watch.html`
-
-## Live demo
-
-http://glit.chat – User
-http://glit.chat/admin.html – admin
-http://glit.chat/watch.html – Watcher(sees admin console, but has no control)
-
 
 ## To-do
 
